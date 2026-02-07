@@ -3,8 +3,10 @@ using UnityEngine.UI;
 
 public class CharacterPreviewUI : MonoBehaviour
 {
-    public Image rightPreviewImage;
+    [Header("Preview Animator")]
+    public CharacterPreviewAnimator previewAnimator;
 
+    [Header("Character Sprites")]
     public Sprite phelsumSprite;
     public Sprite oroboroSprite;
     public Sprite carakaraSprite;
@@ -12,23 +14,30 @@ public class CharacterPreviewUI : MonoBehaviour
 
     public void ShowPreview(CharacterType type)
     {
+        Sprite selectedSprite = null;
+
         switch (type)
         {
             case CharacterType.Phelsum:
-                rightPreviewImage.sprite = phelsumSprite;
+                selectedSprite = phelsumSprite;
                 break;
 
             case CharacterType.oroboro:
-                rightPreviewImage.sprite = oroboroSprite;
+                selectedSprite = oroboroSprite;
                 break;
 
             case CharacterType.carakara:
-                rightPreviewImage.sprite = carakaraSprite;
+                selectedSprite = carakaraSprite;
                 break;
 
             case CharacterType.cerci:
-                rightPreviewImage.sprite = cerciSprite;
+                selectedSprite = cerciSprite;
                 break;
+        }
+
+        if (selectedSprite != null && previewAnimator != null)
+        {
+            previewAnimator.ChangeSpriteAnimated(selectedSprite);
         }
     }
 }

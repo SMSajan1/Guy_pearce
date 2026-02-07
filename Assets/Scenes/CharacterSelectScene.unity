@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7bb1f56ae32694e8e9f7c85ba96cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightPreviewImage: {fileID: 110957831}
+  previewAnimator: {fileID: 110957833}
   phelsumSprite: {fileID: 21300000, guid: 6d35b0655716b3e4eb0b788942b7fc93, type: 3}
   oroboroSprite: {fileID: 21300000, guid: 91456a374e6635b429ef0e2c5b6a0e24, type: 3}
   carakaraSprite: {fileID: 21300000, guid: 581ee1d36eda71d45af628af179cc078, type: 3}

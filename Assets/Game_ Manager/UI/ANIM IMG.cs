@@ -25,7 +25,6 @@ public class CharacterPreviewAnimator : MonoBehaviour
     {
         float time = 0;
 
-        Color startColor = previewImage.color;
         Vector3 startScale = transform.localScale;
 
         // Fade OUT + Shrink
