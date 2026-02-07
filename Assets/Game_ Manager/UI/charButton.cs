@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class CharacterUIButton : MonoBehaviour
 {
-    public Sprite characterSprite;                 // Image for right preview
-    public CharacterUIManager uiManager;
+    public CharacterType characterType;
 
     private Button button;
 
@@ -16,6 +15,6 @@ public class CharacterUIButton : MonoBehaviour
 
     void OnClick()
     {
-        uiManager.ShowCharacter(characterSprite);
+        GameManager.Instance.SelectCharacter(characterType);
     }
 }
