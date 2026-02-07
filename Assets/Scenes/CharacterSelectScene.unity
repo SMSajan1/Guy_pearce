@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 101476200}
   - component: {fileID: 101476199}
   - component: {fileID: 101476198}
-  - component: {fileID: 101476202}
+  - component: {fileID: 101476203}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -452,7 +452,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &101476202
+--- !u!114 &101476203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,10 +461,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 101476197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18a303e023d2114ca13bc165be46863, type: 3}
+  m_Script: {fileID: 11500000, guid: de7bb1f56ae32694e8e9f7c85ba96cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rightPreviewImage: {fileID: 110957831}
+  phelsumSprite: {fileID: 21300000, guid: 6d35b0655716b3e4eb0b788942b7fc93, type: 3}
+  oroboroSprite: {fileID: 21300000, guid: 91456a374e6635b429ef0e2c5b6a0e24, type: 3}
+  carakaraSprite: {fileID: 21300000, guid: 581ee1d36eda71d45af628af179cc078, type: 3}
+  cerciSprite: {fileID: 21300000, guid: 557805555be339c44b381e0409097084, type: 3}
 --- !u!1 &110957829
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +480,7 @@ GameObject:
   - component: {fileID: 110957830}
   - component: {fileID: 110957832}
   - component: {fileID: 110957831}
+  - component: {fileID: 110957833}
   m_Layer: 5
   m_Name: 'SELECTED IMAGE '
   m_TagString: Untagged
@@ -540,6 +545,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110957829}
   m_CullTransparentMesh: 1
+--- !u!114 &110957833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110957829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa8ff37811d16b49b3487d3ffa69d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewImage: {fileID: 110957831}
+  fadeSpeed: 6
+  scalePop: 1.1
+  animationDuration: 0.25
 --- !u!1 &305819360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 3
+  previewUI: {fileID: 101476203}
 --- !u!1 &473529786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 1
+  previewUI: {fileID: 101476203}
 --- !u!1 &534105694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,6 +2220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 2
+  previewUI: {fileID: 101476203}
 --- !u!1 &952217456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 4
+  previewUI: {fileID: 101476203}
 --- !u!1 &1888384608
 GameObject:
   m_ObjectHideFlags: 0
