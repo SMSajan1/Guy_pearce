@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GuyPearceCerciAbilityController : MonoBehaviour
+public class CerciAbilityController : MonoBehaviour
 {
     [Header("Animator")]
     public Animator animator;
