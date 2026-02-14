@@ -25,8 +25,11 @@ public class GuyPearceAbilityController : MonoBehaviour
     public GameObject D_HitVFX;
     public GameObject R_HitVFX;
 
-    [Header("Timing (Dodge System)")]
-    public float hitDelay = 0.4f;
+    [Header("Projectile VFX (A, D, R)")]
+    public float projectileSpeed = 12f;
+
+    [Header("Timing")]
+    public float hitDelay = 0.35f;
     public float dodgeWindow = 0.25f;
     public float recoveryTime = 0.3f;
 
@@ -45,90 +48,100 @@ public class GuyPearceAbilityController : MonoBehaviour
 
     void Update()
     {
-        // 🔒 Force Walk off while busy
         animator.SetBool("Walk", !isBusy && Input.GetKey(KeyCode.W));
 
-        // 🚫 Block new abilities while busy
-        if (isBusy) return;
-
-        if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(PlayAbility("SparkDazzle", Q_CastVFX, Q_HitVFX, opponentHead));
-
-        if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(PlayAbility("Thunderbox", E_CastVFX, E_HitVFX, opponentHead));
-
-        if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(PlayAbility("ArcDischarge", A_CastVFX, A_HitVFX, opponentHead));
-
-        if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(PlayAbility("InducedCurrent", D_CastVFX, D_HitVFX, opponentFace));
-
-        if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(PlayAbility("VoltageSpike", R_CastVFX, R_HitVFX, null));
-
-        // Opponent Dodge (Shift)
         if (dodgeWindowOpen && Input.GetKeyDown(KeyCode.LeftShift))
         {
             dodged = true;
             if (opponentAnimator != null)
                 opponentAnimator.SetTrigger("Dodge");
         }
+
+        if (isBusy) return;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            StartCoroutine(PlayAbility("SparkDazzle", Q_CastVFX, Q_HitVFX, opponentHead, "Hit_1", false));
+
+        if (Input.GetKeyDown(KeyCode.E))
+            StartCoroutine(PlayAbility("Thunderbox", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+
+        if (Input.GetKeyDown(KeyCode.A))
+            StartCoroutine(PlayAbility("ArcDischarge", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+
+        if (Input.GetKeyDown(KeyCode.D))
+            StartCoroutine(PlayAbility("InducedCurrent", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+
+        if (Input.GetKeyDown(KeyCode.R))
+            StartCoroutine(PlayAbility("VoltageSpike", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
     }
 
-    IEnumerator PlayAbility(string triggerName, GameObject castVFX, GameObject hitVFX, Transform hitPoint)
+    IEnumerator PlayAbility(
+        string triggerName,
+        GameObject castVFX,
+        GameObject hitVFX,
+        Transform hitPoint,
+        string opponentHitTrigger,
+        bool isProjectile
+    )
     {
         isBusy = true;
-
-        // 🚫 Reset animator state so nothing else blends in
-        animator.SetBool("Walk", false);
-        animator.ResetTrigger("SparkDazzle");
-        animator.ResetTrigger("Thunderbox");
-        animator.ResetTrigger("ArcDischarge");
-        animator.ResetTrigger("InducedCurrent");
-        animator.ResetTrigger("VoltageSpike");
-
         dodged = false;
 
-        // ▶ Play ability animation
         animator.SetTrigger(triggerName);
 
-        // 1️⃣ Cast VFX on you
+        // Cast VFX (on player)
         if (castVFX != null)
         {
             GameObject castFx = Instantiate(castVFX, transform.position + transform.forward, transform.rotation);
             Destroy(castFx, 3f);
         }
 
-        // 2️⃣ Wait before dodge window
         yield return new WaitForSeconds(hitDelay);
 
         dodgeWindowOpen = true;
-
-        // 3️⃣ Dodge timing window
         yield return new WaitForSeconds(dodgeWindow);
-
         dodgeWindowOpen = false;
 
-        // 4️⃣ Hit if not dodged
         if (!dodged)
         {
-            if (hitVFX != null && hitPoint != null)
+            if (isProjectile && hitVFX != null && hitPoint != null)
+            {
+                GameObject projectile = Instantiate(hitVFX, transform.position + Vector3.up, Quaternion.identity);
+                StartCoroutine(MoveProjectile(projectile, hitPoint.position));
+            }
+            else if (hitVFX != null && hitPoint != null)
             {
                 GameObject hitFx = Instantiate(hitVFX, hitPoint.position, hitPoint.rotation);
                 Destroy(hitFx, 3f);
             }
 
             if (opponentAnimator != null)
-                opponentAnimator.SetTrigger("Hit");
+                opponentAnimator.SetTrigger(opponentHitTrigger);
         }
 
-        // 5️⃣ Recovery lock
         yield return new WaitForSeconds(recoveryTime);
 
         animator.SetTrigger("Idle");
         transform.position = startPosition;
         transform.rotation = startRotation;
 
-        isBusy = false; // 🔓 unlock
+        isBusy = false;
+    }
+
+    IEnumerator MoveProjectile(GameObject projectile, Vector3 targetPos)
+    {
+        while (projectile != null && Vector3.Distance(projectile.transform.position, targetPos) > 0.1f)
+        {
+            projectile.transform.position = Vector3.MoveTowards(
+                projectile.transform.position,
+                targetPos,
+                projectileSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        if (projectile != null)
+            Destroy(projectile, 2f);
     }
 }

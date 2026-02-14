@@ -2191,17 +2191,19 @@ MonoBehaviour:
   opponentHead: {fileID: 1459059625}
   opponentFace: {fileID: 323976687}
   Q_CastVFX: {fileID: 100000, guid: d38b2039516475e40a3945e92fb3afe5, type: 3}
-  E_CastVFX: {fileID: 0}
-  A_CastVFX: {fileID: 0}
+  E_CastVFX: {fileID: 1628744458893394, guid: 0a9610f022f06034991d2f8e9879430a, type: 3}
+  A_CastVFX: {fileID: 100000, guid: d38b2039516475e40a3945e92fb3afe5, type: 3}
   D_CastVFX: {fileID: 0}
   R_CastVFX: {fileID: 0}
   Q_HitVFX: {fileID: 5930802513300157527, guid: fbe811688ce42b343a831c30394fb5b6, type: 3}
-  E_HitVFX: {fileID: 0}
-  A_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 61290533566012105, guid: 4c6e87a0fa2dab14ab2a03ab257d056a, type: 3}
+  A_HitVFX: {fileID: 100000, guid: d38b2039516475e40a3945e92fb3afe5, type: 3}
   D_HitVFX: {fileID: 0}
   R_HitVFX: {fileID: 0}
+  projectileSpeed: 12
   hitDelay: 0.4
   dodgeWindow: 0.25
+  recoveryTime: 0.3
 --- !u!1 &1237276173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6130c3c33304aff448eea9fb7591e07a, type: 3}
@@ -2950,8 +2952,10 @@ MonoBehaviour:
   A_HitVFX: {fileID: 0}
   D_HitVFX: {fileID: 0}
   R_HitVFX: {fileID: 0}
+  projectileSpeed: 12
   hitDelay: 0.4
   dodgeWindow: 0.25
+  recoveryTime: 0.3
 --- !u!4 &1547590611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8af38c2282739d64f828aa3eb99106a5, type: 3}
