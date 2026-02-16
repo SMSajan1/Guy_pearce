@@ -57,6 +57,8 @@ public class GuyPearceAbilityController : MonoBehaviour
                 opponentAnimator.SetTrigger("Dodge");
         }
 
+
+        //PHELSUM
         if (isBusy) return;
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -73,6 +75,58 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
             StartCoroutine(PlayAbility("VoltageSpike", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+
+        //OROBORO
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            StartCoroutine(PlayAbility("AnthelionBlast", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+        if (Input.GetKeyDown(KeyCode.E))
+            StartCoroutine(PlayAbility("CrownFire", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+
+        if (Input.GetKeyDown(KeyCode.A))
+            StartCoroutine(PlayAbility("Combust", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+
+        if (Input.GetKeyDown(KeyCode.D))
+            StartCoroutine(PlayAbility("Tunnel", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+
+        if (Input.GetKeyDown(KeyCode.R))
+            StartCoroutine(PlayAbility("RedFlag", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+        //CARAKARA
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            StartCoroutine(PlayAbility("Squall", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+        if (Input.GetKeyDown(KeyCode.E))
+            StartCoroutine(PlayAbility("Aerodynamic", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+
+        if (Input.GetKeyDown(KeyCode.A))
+            StartCoroutine(PlayAbility("DeftSwipe", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+
+        if (Input.GetKeyDown(KeyCode.D))
+            StartCoroutine(PlayAbility("JetMax", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+
+        if (Input.GetKeyDown(KeyCode.R))
+            StartCoroutine(PlayAbility("Intensity", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+        //CERCI
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            StartCoroutine(PlayAbility("Downdraft", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+
+        if (Input.GetKeyDown(KeyCode.E))
+            StartCoroutine(PlayAbility("Bluster", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+
+        if (Input.GetKeyDown(KeyCode.A))
+            StartCoroutine(PlayAbility("RainBandLash", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+
+        if (Input.GetKeyDown(KeyCode.D))
+            StartCoroutine(PlayAbility("SeededCloud", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+
+        if (Input.GetKeyDown(KeyCode.R))
+            StartCoroutine(PlayAbility("StrongBreeze", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
     }
 
     IEnumerator PlayAbility(

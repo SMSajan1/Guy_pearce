@@ -252,8 +252,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52280517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65.32665, y: 82.50369, z: 34.127186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.186474, y: 3.0428238, z: -6.0052795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -261,7 +261,7 @@ Transform:
   - {fileID: 436650364}
   - {fileID: 1217573089}
   - {fileID: 1547590611}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1213309531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &52280519
 MonoBehaviour:
@@ -824,6 +824,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
   m_PrefabInstance: {fileID: 1900492286}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &436650365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436650362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f4604f4885d3c4f85ac4c882316db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  opponentAnimator: {fileID: 0}
+  opponentHead: {fileID: 0}
+  opponentFace: {fileID: 0}
+  Q_CastVFX: {fileID: 0}
+  E_CastVFX: {fileID: 0}
+  A_CastVFX: {fileID: 0}
+  D_CastVFX: {fileID: 0}
+  R_CastVFX: {fileID: 0}
+  Q_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 0}
+  A_HitVFX: {fileID: 0}
+  D_HitVFX: {fileID: 0}
+  R_HitVFX: {fileID: 0}
+  projectileSpeed: 12
+  hitDelay: 0.35
+  dodgeWindow: 0.25
+  recoveryTime: 0.3
 --- !u!4 &440260177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: db50ab1c866680e4bb870bf5eb72dd3d, type: 3}
@@ -2143,6 +2173,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1213309530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213309531}
+  m_Layer: 0
+  m_Name: 'Player Manager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1213309531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213309530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -61.14018, y: 79.46087, z: 40.132465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 52280518}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1217573086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
@@ -2938,10 +3000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f4604f4885d3c4f85ac4c882316db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  opponentAnimator: {fileID: 0}
-  opponentHead: {fileID: 0}
-  opponentFace: {fileID: 0}
+  animator: {fileID: 1547590607}
+  opponentAnimator: {fileID: 1209731878}
+  opponentHead: {fileID: 1459059625}
+  opponentFace: {fileID: 323976687}
   Q_CastVFX: {fileID: 0}
   E_CastVFX: {fileID: 0}
   A_CastVFX: {fileID: 0}
@@ -8326,6 +8388,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 436650363}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 436650365}
   m_SourcePrefab: {fileID: 100100000, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
 --- !u!1001 &2009970765
 PrefabInstance:
@@ -10199,17 +10264,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6223491006479514531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269e9a026ae954c48a02d3fe2b0ea9b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 25f4604f4885d3c4f85ac4c882316db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6707435120153649434}
-  StrongVFX: {fileID: 0}
-  BurstVFX: {fileID: 0}
-  WaterVFX: {fileID: 0}
-  sliveVFX: {fileID: 0}
-  breathVFX: {fileID: 0}
+  animator: {fileID: 0}
+  opponentAnimator: {fileID: 0}
   opponentHead: {fileID: 0}
   opponentFace: {fileID: 0}
+  Q_CastVFX: {fileID: 0}
+  E_CastVFX: {fileID: 0}
+  A_CastVFX: {fileID: 0}
+  D_CastVFX: {fileID: 0}
+  R_CastVFX: {fileID: 0}
+  Q_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 0}
+  A_HitVFX: {fileID: 0}
+  D_HitVFX: {fileID: 0}
+  R_HitVFX: {fileID: 0}
+  projectileSpeed: 12
+  hitDelay: 0.35
+  dodgeWindow: 0.25
+  recoveryTime: 0.3
 --- !u!1 &6814804520191508835
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,7 +10507,7 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 543702450}
   - {fileID: 1352272057}
-  - {fileID: 52280518}
+  - {fileID: 1213309531}
   - {fileID: 2081642852}
   - {fileID: 1694473169}
   - {fileID: 1077114847}
