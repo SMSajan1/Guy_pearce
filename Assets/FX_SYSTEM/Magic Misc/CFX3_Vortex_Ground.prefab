@@ -206,8 +206,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.43529412, g: 0, b: 1, a: 0.5019608}
-      maxColor: {r: 0.78039217, g: 0.3137255, b: 1, a: 0.5019608}
+      minColor: {r: 0.8588236, g: 0.6745098, b: 0.44705886, a: 1}
+      maxColor: {r: 0.8588236, g: 0.6745098, b: 0.44705886, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1053,7 +1053,7 @@ ParticleSystem:
     enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1106,7 +1106,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -4784,7 +4784,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4941,7 +4941,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.7921569, g: 0.3372549, b: 1, a: 0.5019608}
+      maxColor: {r: 0.9056604, g: 0.7442744, b: 0.54254186, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9482,7 +9482,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9638,8 +9638,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.43529412, g: 0, b: 1, a: 0.5019608}
-      maxColor: {r: 0.78039217, g: 0.3137255, b: 1, a: 0.5019608}
+      minColor: {r: 0.8588236, g: 0.6745098, b: 0.44705886, a: 1}
+      maxColor: {r: 0.8941177, g: 0.70980394, b: 0.5019608, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
