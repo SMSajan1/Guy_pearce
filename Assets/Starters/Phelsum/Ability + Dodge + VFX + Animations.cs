@@ -29,12 +29,26 @@ public class GuyPearceAbilityController : MonoBehaviour
     public GameObject D_CastVFX;
     public GameObject R_CastVFX;
 
+    [Header("Cast VFX Offsets (Local X,Y,Z)")]
+    public Vector3 Q_CastOffset;
+    public Vector3 E_CastOffset;
+    public Vector3 A_CastOffset;
+    public Vector3 D_CastOffset;
+    public Vector3 R_CastOffset;
+
     [Header("Hit VFX (on opponent)")]
     public GameObject Q_HitVFX;
     public GameObject E_HitVFX;
     public GameObject A_HitVFX;
     public GameObject D_HitVFX;
     public GameObject R_HitVFX;
+
+    [Header("Hit VFX Offsets (Local X,Y,Z)")]
+    public Vector3 Q_HitOffset;
+    public Vector3 E_HitOffset;
+    public Vector3 A_HitOffset;
+    public Vector3 D_HitOffset;
+    public Vector3 R_HitOffset;
 
     [Header("Projectile VFX (A, D, R)")]
     public float projectileSpeed = 12f;
@@ -59,7 +73,7 @@ public class GuyPearceAbilityController : MonoBehaviour
 
     void Update()
     {
-        animator.SetBool("Walk", !isBusy && Input.GetKey(KeyCode.W));
+        if (isBusy) return;
 
         if (dodgeWindowOpen && Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -68,86 +82,78 @@ public class GuyPearceAbilityController : MonoBehaviour
                 opponentAnimator.SetTrigger("Dodge");
         }
 
-        if (isBusy) return;
-
         switch (characterType)
         {
-            case CharacterType.PHELSUM:
-                HandlePhelsum();
-                break;
-
-            case CharacterType.OROBORO:
-                HandleOroboro();
-                break;
-
-            case CharacterType.CARAKARA:
-                HandleCarakara();
-                break;
-
-            case CharacterType.CERCI:
-                HandleCerci();
-                break;
+            case CharacterType.PHELSUM: HandlePhelsum(); break;
+            case CharacterType.OROBORO: HandleOroboro(); break;
+            case CharacterType.CARAKARA: HandleCarakara(); break;
+            case CharacterType.CERCI: HandleCerci(); break;
         }
     }
 
     void HandlePhelsum()
     {
         if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(PlayAbility("SparkDazzle", Q_CastVFX, Q_HitVFX, opponentHead, "Hit_1", false));
+            StartCoroutine(PlayAbility("SparkDazzle", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false));
         if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(PlayAbility("Thunderbox", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+            StartCoroutine(PlayAbility("Thunderbox", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
         if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(PlayAbility("ArcDischarge", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+            StartCoroutine(PlayAbility("ArcDischarge", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
         if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(PlayAbility("InducedCurrent", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+            StartCoroutine(PlayAbility("InducedCurrent", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentFace, "Hit_4", true));
         if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(PlayAbility("VoltageSpike", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+            StartCoroutine(PlayAbility("VoltageSpike", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
     }
 
     void HandleOroboro()
     {
         if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(PlayAbility("AnthelionBlast", Q_CastVFX, Q_HitVFX, opponentHead, "Hit_1", true));
+            StartCoroutine(PlayAbility("AnthelionBlast", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", true));
         if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(PlayAbility("CrownFire", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+            StartCoroutine(PlayAbility("CrownFire", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
         if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(PlayAbility("Combust", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+            StartCoroutine(PlayAbility("Combust", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
         if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(PlayAbility("Tunnel", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+            StartCoroutine(PlayAbility("Tunnel", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentFace, "Hit_4", true));
         if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(PlayAbility("RedFlag", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+            StartCoroutine(PlayAbility("RedFlag", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
     }
 
     void HandleCarakara()
     {
         if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(PlayAbility("Squall", Q_CastVFX, Q_HitVFX, opponentHead, "Hit_1", true));
+            StartCoroutine(PlayAbility("Squall", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", true));
         if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(PlayAbility("Aerodynamic", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+            StartCoroutine(PlayAbility("Aerodynamic", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
         if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(PlayAbility("DeftSwipe", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+            StartCoroutine(PlayAbility("DeftSwipe", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
         if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(PlayAbility("JetMax", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+            StartCoroutine(PlayAbility("JetMax", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentFace, "Hit_4", true));
         if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(PlayAbility("Intensify", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+            StartCoroutine(PlayAbility("Intensify", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
     }
 
     void HandleCerci()
     {
         if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(PlayAbility("Downdraft", Q_CastVFX, Q_HitVFX, opponentHead, "Hit_1", true));
+            StartCoroutine(PlayAbility("Downdraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", true));
         if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(PlayAbility("Bluster", E_CastVFX, E_HitVFX, opponentHead, "Hit_2", false));
+            StartCoroutine(PlayAbility("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
         if (Input.GetKeyDown(KeyCode.A))
-            StartCoroutine(PlayAbility("RainBandLash", A_CastVFX, A_HitVFX, opponentHead, "Hit_3", true));
+            StartCoroutine(PlayAbility("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
         if (Input.GetKeyDown(KeyCode.D))
-            StartCoroutine(PlayAbility("SeededCloud", D_CastVFX, D_HitVFX, opponentFace, "Hit_4", true));
+            StartCoroutine(PlayAbility("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentFace, "Hit_4", true));
         if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(PlayAbility("StrongBreeze", R_CastVFX, R_HitVFX, opponentHead, "Hit_5", true));
+            StartCoroutine(PlayAbility("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
     }
 
-    IEnumerator PlayAbility(string triggerName, GameObject castVFX, GameObject hitVFX,
-        Transform hitPoint, string opponentHitTrigger, bool isProjectile)
+    IEnumerator PlayAbility(
+        string triggerName,
+        GameObject castVFX, Vector3 castOffset,
+        GameObject hitVFX, Vector3 hitOffset,
+        Transform hitPoint,
+        string opponentHitTrigger,
+        bool isProjectile)
     {
         isBusy = true;
         dodged = false;
@@ -156,7 +162,8 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         if (castVFX != null)
         {
-            GameObject castFx = Instantiate(castVFX, transform.position + transform.forward, transform.rotation);
+            Vector3 castPos = transform.TransformPoint(castOffset);
+            GameObject castFx = Instantiate(castVFX, castPos, transform.rotation);
             Destroy(castFx, 3f);
         }
 
@@ -170,12 +177,14 @@ public class GuyPearceAbilityController : MonoBehaviour
         {
             if (isProjectile && hitVFX != null && hitPoint != null)
             {
-                GameObject projectile = Instantiate(hitVFX, transform.position + Vector3.up, Quaternion.identity);
-                StartCoroutine(MoveProjectile(projectile, hitPoint.position));
+                Vector3 startPos = transform.TransformPoint(castOffset);
+                GameObject projectile = Instantiate(hitVFX, startPos, Quaternion.identity);
+                StartCoroutine(MoveProjectile(projectile, hitPoint.TransformPoint(hitOffset)));
             }
             else if (hitVFX != null && hitPoint != null)
             {
-                GameObject hitFx = Instantiate(hitVFX, hitPoint.position, hitPoint.rotation);
+                Vector3 hitPos = hitPoint.TransformPoint(hitOffset);
+                GameObject hitFx = Instantiate(hitVFX, hitPos, hitPoint.rotation);
                 Destroy(hitFx, 3f);
             }
 
