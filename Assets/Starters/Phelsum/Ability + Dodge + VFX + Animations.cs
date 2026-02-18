@@ -51,41 +51,42 @@ public class GuyPearceAbilityController : MonoBehaviour
         switch (characterType)
         {
             case CharacterType.PHELSUM:
-                if (key == "Q") StartCoroutine(Ability("SparkDazzle", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, false));
-                if (key == "E") StartCoroutine(Ability("Thunderbox", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, false));
-                if (key == "A") StartCoroutine(Ability("ArcDischarge", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, true));
-                if (key == "D") StartCoroutine(Ability("InducedCurrent", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, true));
-                if (key == "R") StartCoroutine(Ability("VoltageSpike", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, true));
+                if (key == "Q") StartCoroutine(Ability("SparkDazzle", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false));
+                if (key == "E") StartCoroutine(Ability("Thunderbox", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
+                if (key == "A") StartCoroutine(Ability("ArcDischarge", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
+                if (key == "D") StartCoroutine(Ability("InducedCurrent", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true));
+                if (key == "R") StartCoroutine(Ability("VoltageSpike", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
                 break;
 
             case CharacterType.OROBORO:
-                if (key == "Q") StartCoroutine(Ability("AnthelionBlast", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, false));
-                if (key == "E") StartCoroutine(Ability("CrownFire", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, false));
-                if (key == "A") StartCoroutine(Ability("Combust", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, true));
-                if (key == "D") StartCoroutine(Ability("Tunnel", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, false));
-                if (key == "R") StartCoroutine(Ability("RedFlag", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, false));
+                if (key == "Q") StartCoroutine(Ability("AnthelionBlast", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false));
+                if (key == "E") StartCoroutine(Ability("CrownFire", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
+                if (key == "A") StartCoroutine(Ability("Combust", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
+                if (key == "D") StartCoroutine(Ability("Tunnel", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
+                if (key == "R") StartCoroutine(Ability("RedFlag", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
                 break;
 
             case CharacterType.CARAKARA:
-                if (key == "Q") StartCoroutine(Ability("Squall", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, true));
-                if (key == "E") StartCoroutine(Ability("Aerodynamic", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, false));
-                if (key == "A") StartCoroutine(Ability("DeftSwipe", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, false));
-                if (key == "D") StartCoroutine(Ability("JetMax", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, false));
-                if (key == "R") StartCoroutine(Ability("Intensify", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, false));
+                if (key == "Q") StartCoroutine(Ability("Squall", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
+                if (key == "E") StartCoroutine(Ability("Aerodynamic", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false));
+                if (key == "A") StartCoroutine(Ability("DeftSwipe", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", false));
+                if (key == "D") StartCoroutine(Ability("JetMax", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
+                if (key == "R") StartCoroutine(Ability("Intensify", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
                 break;
 
             case CharacterType.CERCI:
-                if (key == "Q") StartCoroutine(Ability("DownDraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, false));
-                if (key == "E") StartCoroutine(Ability("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, true));
-                if (key == "A") StartCoroutine(Ability("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, true));
-                if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, false));
-                if (key == "R") StartCoroutine(Ability("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, false));
+                if (key == "Q") StartCoroutine(Ability("DownDraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", false));
+                if (key == "E") StartCoroutine(Ability("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true));
+                if (key == "A") StartCoroutine(Ability("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
+                if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
+                if (key == "R") StartCoroutine(Ability("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
                 break;
         }
     }
 
     IEnumerator Ability(string anim, GameObject castFx, Vector3 castOffset,
-        GameObject hitFx, Vector3 hitOffset, Transform hitPoint, bool projectile)
+        GameObject hitFx, Vector3 hitOffset, Transform hitPoint,
+        string opponentHitTrigger, bool projectile)
     {
         isBusy = true;
 
@@ -95,6 +96,10 @@ public class GuyPearceAbilityController : MonoBehaviour
             Instantiate(castFx, transform.TransformPoint(castOffset), transform.rotation);
 
         yield return new WaitForSeconds(hitDelay);
+
+        // Play Opponent Hit Animation at same time as Hit VFX
+        if (opponentAnimator)
+            opponentAnimator.SetTrigger(opponentHitTrigger);
 
         if (hitFx)
         {
