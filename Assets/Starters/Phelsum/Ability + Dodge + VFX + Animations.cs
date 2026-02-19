@@ -75,7 +75,7 @@ public class GuyPearceAbilityController : MonoBehaviour
                 break;
 
             case CharacterType.CERCI:
-                if (key == "Q") StartCoroutine(Ability("DownDraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", false));
+                if (key == "Q") StartCoroutine(Ability("Downdraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", false));
                 if (key == "E") StartCoroutine(Ability("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true));
                 if (key == "A") StartCoroutine(Ability("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
                 if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
