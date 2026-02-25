@@ -514,6 +514,8 @@ MonoBehaviour:
   oroboroSprite: {fileID: 21300000, guid: 91456a374e6635b429ef0e2c5b6a0e24, type: 3}
   carakaraSprite: {fileID: 21300000, guid: 581ee1d36eda71d45af628af179cc078, type: 3}
   cerciSprite: {fileID: 21300000, guid: 557805555be339c44b381e0409097084, type: 3}
+  mbengaSprite: {fileID: 21300000, guid: 88b506e9ba1ed68438655b525b9f1b3d, type: 3}
+  ryuudeSprite: {fileID: 21300000, guid: f1846fdc3cd10a34c98acbf2bac60637, type: 3}
 --- !u!1 &110957829
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +741,9 @@ GameObject:
   - component: {fileID: 362953345}
   - component: {fileID: 362953344}
   - component: {fileID: 362953343}
+  - component: {fileID: 362953346}
   m_Layer: 5
-  m_Name: Phelsum (4)
+  m_Name: Mbenga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,6 +851,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362953341}
   m_CullTransparentMesh: 1
+--- !u!114 &362953346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362953341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8409d734428804caa485b0dc15821f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 5
+  previewUI: {fileID: 101476203}
 --- !u!1 &418802150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,8 +2365,9 @@ GameObject:
   - component: {fileID: 1071312213}
   - component: {fileID: 1071312212}
   - component: {fileID: 1071312211}
+  - component: {fileID: 1071312214}
   m_Layer: 5
-  m_Name: Phelsum (5)
+  m_Name: Ryuude
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2457,6 +2475,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071312209}
   m_CullTransparentMesh: 1
+--- !u!114 &1071312214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071312209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8409d734428804caa485b0dc15821f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 6
+  previewUI: {fileID: 101476203}
 --- !u!1 &1076610190
 GameObject:
   m_ObjectHideFlags: 0
