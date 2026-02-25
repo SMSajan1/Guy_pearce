@@ -44,14 +44,14 @@ public class PlayerActivator : MonoBehaviour
                 cerci.SetActive(true);
                 break;
 
-            case CharacterType.cerci:
-                mbenga.SetActive(true);
+            case CharacterType.mbenga:
+                 mbenga.SetActive(true);
                 break;
-            case CharacterType.cerci:
+            case CharacterType.ryuude:
                 ryuude.SetActive(true);
                 break;
 
         }
-    
+
     }
 }

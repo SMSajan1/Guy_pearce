@@ -281,6 +281,8 @@ MonoBehaviour:
   oroboro: {fileID: 1547590606}
   carakara: {fileID: 436650362}
   cerci: {fileID: 6223491006479514531}
+  mbenga: {fileID: 1189149839}
+  ryuude: {fileID: 2088785033}
 --- !u!1 &133617241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1613,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 50
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -1637,8 +1639,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05903985, y: 0.7023484, z: -0.063450664, w: 0.70653737}
-  m_LocalPosition: {x: -83.36, y: 84.02, z: 40.15}
+  m_LocalRotation: {x: 0.17254154, y: -0.011088402, z: 0.0019424674, w: 0.98493797}
+  m_LocalPosition: {x: -55.89, y: 85.21, z: 17.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2143,6 +2145,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad0bf796f7d21f943845921d0c4a170a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1189149840}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad0bf796f7d21f943845921d0c4a170a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189149841}
   m_SourcePrefab: {fileID: 100100000, guid: ad0bf796f7d21f943845921d0c4a170a, type: 3}
 --- !u!4 &1189149838 stripped
 Transform:
@@ -2175,6 +2180,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1189149841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189149839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f4604f4885d3c4f85ac4c882316db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 4
+  animator: {fileID: 0}
+  opponentAnimator: {fileID: 0}
+  opponentHead: {fileID: 0}
+  opponentBody: {fileID: 0}
+  Q_CastVFX: {fileID: 0}
+  E_CastVFX: {fileID: 0}
+  A_CastVFX: {fileID: 0}
+  D_CastVFX: {fileID: 0}
+  R_CastVFX: {fileID: 0}
+  Q_CastOffset: {x: 0, y: 0, z: 0}
+  E_CastOffset: {x: 0, y: 0, z: 0}
+  A_CastOffset: {x: 0, y: 0, z: 0}
+  D_CastOffset: {x: 0, y: 0, z: 0}
+  R_CastOffset: {x: 0, y: 0, z: 0}
+  Q_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 0}
+  A_HitVFX: {fileID: 0}
+  D_HitVFX: {fileID: 0}
+  R_HitVFX: {fileID: 0}
+  Q_HitOffset: {x: 0, y: 0, z: 0}
+  E_HitOffset: {x: 0, y: 0, z: 0}
+  A_HitOffset: {x: 0, y: 0, z: 0}
+  D_HitOffset: {x: 0, y: 0, z: 0}
+  R_HitOffset: {x: 0, y: 0, z: 0}
+  hitDelay: 0.35
+  animationLockTime: 0.9
+  projectileSpeed: 15
 --- !u!1001 &1209731874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9025,6 +9070,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2088785034}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2088785035}
   m_SourcePrefab: {fileID: 100100000, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
 --- !u!4 &2088785032 stripped
 Transform:
@@ -9057,6 +9105,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2088785035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088785033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f4604f4885d3c4f85ac4c882316db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 5
+  animator: {fileID: 0}
+  opponentAnimator: {fileID: 0}
+  opponentHead: {fileID: 0}
+  opponentBody: {fileID: 0}
+  Q_CastVFX: {fileID: 0}
+  E_CastVFX: {fileID: 0}
+  A_CastVFX: {fileID: 0}
+  D_CastVFX: {fileID: 0}
+  R_CastVFX: {fileID: 0}
+  Q_CastOffset: {x: 0, y: 0, z: 0}
+  E_CastOffset: {x: 0, y: 0, z: 0}
+  A_CastOffset: {x: 0, y: 0, z: 0}
+  D_CastOffset: {x: 0, y: 0, z: 0}
+  R_CastOffset: {x: 0, y: 0, z: 0}
+  Q_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 0}
+  A_HitVFX: {fileID: 0}
+  D_HitVFX: {fileID: 0}
+  R_HitVFX: {fileID: 0}
+  Q_HitOffset: {x: 0, y: 0, z: 0}
+  E_HitOffset: {x: 0, y: 0, z: 0}
+  A_HitOffset: {x: 0, y: 0, z: 0}
+  D_HitOffset: {x: 0, y: 0, z: 0}
+  R_HitOffset: {x: 0, y: 0, z: 0}
+  hitDelay: 0.35
+  animationLockTime: 0.9
+  projectileSpeed: 15
 --- !u!1001 &2091045810
 PrefabInstance:
   m_ObjectHideFlags: 0

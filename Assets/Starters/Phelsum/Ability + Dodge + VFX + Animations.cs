@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GuyPearceAbilityController : MonoBehaviour
 {
-    public enum CharacterType { PHELSUM, OROBORO, CARAKARA, CERCI }
+    public enum CharacterType { PHELSUM, OROBORO, CARAKARA, CERCI, MBENGA, RYUUDE }
     public CharacterType characterType;
 
     [Header("Animators")]
@@ -81,6 +81,22 @@ public class GuyPearceAbilityController : MonoBehaviour
                 if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
                 if (key == "R") StartCoroutine(Ability("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
                 break;
+
+            case CharacterType.MBENGA:
+                if (key == "Q") StartCoroutine(Ability("MeleoricWater", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
+                if (key == "E") StartCoroutine(Ability("Waterlog", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false));
+                if (key == "A") StartCoroutine(Ability("Torrent", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
+                if (key == "D") StartCoroutine(Ability("DewPoint", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
+                if (key == "R") StartCoroutine(Ability("BrumousDance", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
+                break;
+
+            case CharacterType.RYUUDE:
+                if (key == "Q") StartCoroutine(Ability("MulticellVolley", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
+                if (key == "E") StartCoroutine(Ability("CoronalRain", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true));
+                if (key == "A") StartCoroutine(Ability("SevereStorm", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
+                if (key == "D") StartCoroutine(Ability("ToxicShot", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true));
+                if (key == "R") StartCoroutine(Ability("SolarDynamo", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", true));
+                break;
         }
     }
 
@@ -97,7 +113,6 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         yield return new WaitForSeconds(hitDelay);
 
-        // Play Opponent Hit Animation at same time as Hit VFX
         if (opponentAnimator)
             opponentAnimator.SetTrigger(opponentHitTrigger);
 

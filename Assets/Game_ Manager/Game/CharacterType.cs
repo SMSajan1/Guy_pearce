@@ -4,7 +4,7 @@ public enum CharacterType
     Phelsum,
     oroboro,
     carakara,
-    cerci
+    cerci,
     mbenga,
     ryuude,
 }
