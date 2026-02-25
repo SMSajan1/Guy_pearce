@@ -5,4 +5,6 @@ public enum CharacterType
     oroboro,
     carakara,
     cerci
+    mbenga,
+    ryuude,
 }

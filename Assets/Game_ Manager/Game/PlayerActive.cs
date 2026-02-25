@@ -6,6 +6,8 @@ public class PlayerActivator : MonoBehaviour
     public GameObject oroboro;
     public GameObject carakara;
     public GameObject cerci;
+    public GameObject mbenga;
+    public GameObject ryuude;
 
 
     void Start()
@@ -21,6 +23,8 @@ public class PlayerActivator : MonoBehaviour
         oroboro.SetActive(false);
         carakara.SetActive(false);
         cerci.SetActive(false);
+        mbenga.SetActive(false);
+        ryuude.SetActive(false);
 
         switch (selected)
         {
@@ -40,6 +44,12 @@ public class PlayerActivator : MonoBehaviour
                 cerci.SetActive(true);
                 break;
 
+            case CharacterType.cerci:
+                mbenga.SetActive(true);
+                break;
+            case CharacterType.cerci:
+                ryuude.SetActive(true);
+                break;
 
         }
     

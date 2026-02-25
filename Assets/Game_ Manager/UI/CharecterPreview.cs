@@ -11,6 +11,8 @@ public class CharacterPreviewUI : MonoBehaviour
     public Sprite oroboroSprite;
     public Sprite carakaraSprite;
     public Sprite cerciSprite;
+    public Sprite mbengaSprite;
+    public Sprite ryuudeSprite;
 
     public void ShowPreview(CharacterType type)
     {
@@ -32,6 +34,12 @@ public class CharacterPreviewUI : MonoBehaviour
 
             case CharacterType.cerci:
                 selectedSprite = cerciSprite;
+                break;
+            case CharacterType.mbenga:
+                selectedSprite = mbengaSprite;
+                break;
+            case CharacterType.ryuude:
+                selectedSprite = ryuudeSprite;
                 break;
         }
 
