@@ -970,8 +970,8 @@ MonoBehaviour:
   animator: {fileID: 436650363}
   opponentAnimator: {fileID: 1209731878}
   opponentHead: {fileID: 1459059625}
-  opponentBody: {fileID: 0}
-  Q_CastVFX: {fileID: 8172849020266659018, guid: 4211377076e55054eb09e8592944ac48, type: 3}
+  opponentBody: {fileID: 938126635}
+  Q_CastVFX: {fileID: 0}
   E_CastVFX: {fileID: 5010331647855986242, guid: 663e5fd35ce15b54895e4d29183270be, type: 3}
   A_CastVFX: {fileID: 8194992990867289339, guid: f885a2e6e394ba74792f46b7e965eb49, type: 3}
   D_CastVFX: {fileID: 100000, guid: ee8b951ca9e81ad4a993204a467052f5, type: 3}
@@ -981,7 +981,7 @@ MonoBehaviour:
   A_CastOffset: {x: 0, y: 0, z: 0}
   D_CastOffset: {x: 0, y: 0, z: 0}
   R_CastOffset: {x: 0, y: 0, z: 0}
-  Q_HitVFX: {fileID: 0}
+  Q_HitVFX: {fileID: 8172849020266659018, guid: 4211377076e55054eb09e8592944ac48, type: 3}
   E_HitVFX: {fileID: 0}
   A_HitVFX: {fileID: 0}
   D_HitVFX: {fileID: 0}
@@ -9424,7 +9424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8795997787007649091, guid: 1d0106452be9b684c954b586623011b6, type: 3}
       propertyPath: m_CastShadows
@@ -10881,7 +10881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &6288467185059752835
 MeshRenderer:
   m_ObjectHideFlags: 0
