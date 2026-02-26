@@ -83,7 +83,7 @@ public class GuyPearceAbilityController : MonoBehaviour
                 break;
 
             case CharacterType.MBENGA:
-                if (key == "Q") StartCoroutine(Ability("MeleoricWater", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
+                if (key == "Q") StartCoroutine(Ability("MeteoricWater", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
                 if (key == "E") StartCoroutine(Ability("Waterlog", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false));
                 if (key == "A") StartCoroutine(Ability("Torrent", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
                 if (key == "D") StartCoroutine(Ability("DewPoint", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
