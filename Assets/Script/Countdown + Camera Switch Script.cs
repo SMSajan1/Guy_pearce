@@ -24,6 +24,8 @@ public class CameraCountdown : MonoBehaviour
         StartCoroutine(CountdownRoutine());
     }
 
+
+
     IEnumerator CountdownRoutine()
     {
         countdownText.gameObject.SetActive(true);
