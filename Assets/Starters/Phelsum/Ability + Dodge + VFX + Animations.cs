@@ -113,34 +113,51 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         yield return new WaitForSeconds(hitDelay);
 
-        if (opponentAnimator)
-            opponentAnimator.SetTrigger(opponentHitTrigger);
-
-        if (hitFx)
+        if (hitFx && hitPoint != null)
         {
             if (projectile)
             {
-                GameObject proj = Instantiate(hitFx, transform.TransformPoint(castOffset), Quaternion.identity);
-                StartCoroutine(MoveProjectile(proj, hitPoint.TransformPoint(hitOffset)));
+                Vector3 spawnPos = transform.TransformPoint(castOffset);
+                Vector3 targetPos = hitPoint.TransformPoint(hitOffset);
+
+                // Face the target on spawn
+                Quaternion spawnRot = Quaternion.LookRotation((targetPos - spawnPos).normalized);
+                GameObject proj = Instantiate(hitFx, spawnPos, spawnRot);
+
+                // Opponent reacts on IMPACT, not on cast
+                StartCoroutine(MoveProjectile(proj, targetPos, () =>
+                {
+                    if (opponentAnimator)
+                        opponentAnimator.SetTrigger(opponentHitTrigger);
+                }));
             }
             else
             {
+                if (opponentAnimator)
+                    opponentAnimator.SetTrigger(opponentHitTrigger);
+
                 Instantiate(hitFx, hitPoint.TransformPoint(hitOffset), hitPoint.rotation);
             }
         }
 
         yield return new WaitForSeconds(animationLockTime);
-
         isBusy = false;
     }
 
-    IEnumerator MoveProjectile(GameObject fx, Vector3 target)
+    // Callback fires when projectile reaches target
+    IEnumerator MoveProjectile(GameObject fx, Vector3 target, System.Action onImpact = null)
     {
+        if (fx == null) yield break;
+
         while (fx && Vector3.Distance(fx.transform.position, target) > 0.1f)
         {
-            fx.transform.position = Vector3.MoveTowards(fx.transform.position, target, projectileSpeed * Time.deltaTime);
+            fx.transform.position = Vector3.MoveTowards(
+                fx.transform.position, target, projectileSpeed * Time.deltaTime);
             yield return null;
         }
+
+        onImpact?.Invoke();
+
         if (fx) Destroy(fx, 2f);
     }
 }
