@@ -11,27 +11,68 @@ public class PlayerActivator : MonoBehaviour
     public GameObject mbengaPrefab;
     public GameObject ryuudePrefab;
 
-    [Header("Spawn Points (3 positions)")]
-    public Transform spawnPoint1;
-    public Transform spawnPoint2;
-    public Transform spawnPoint3;
+    [Header("Player Spawn Points (3 positions)")]
+    public Transform playerSpawn1;
+    public Transform playerSpawn2;
+    public Transform playerSpawn3;
+
+    [Header("Opponent Spawn Points (3 positions)")]
+    public Transform opponentSpawn1;
+    public Transform opponentSpawn2;
+    public Transform opponentSpawn3;
 
     void Start()
     {
-        SpawnSelectedCharacters();
+        SpawnTeams();
     }
 
-    void SpawnSelectedCharacters()
+    void SpawnTeams()
     {
-        List<CharacterType> team = GameManager.Instance.selectedCharacters;
-        Transform[] spawnPoints = { spawnPoint1, spawnPoint2, spawnPoint3 };
+        List<CharacterType> playerTeam = GameManager.Instance.selectedCharacters;
+        List<CharacterType> opponentTeam = GetOpponentTeam(playerTeam);
 
-        for (int i = 0; i < team.Count; i++)
+        Transform[] playerSpawns = { playerSpawn1, playerSpawn2, playerSpawn3 };
+        Transform[] opponentSpawns = { opponentSpawn1, opponentSpawn2, opponentSpawn3 };
+
+        // Spawn player team
+        for (int i = 0; i < playerTeam.Count; i++)
         {
-            GameObject prefab = GetPrefab(team[i]);
+            GameObject prefab = GetPrefab(playerTeam[i]);
             if (prefab != null)
-                Instantiate(prefab, spawnPoints[i].position, spawnPoints[i].rotation);
+                Instantiate(prefab, playerSpawns[i].position, playerSpawns[i].rotation);
         }
+
+        // Spawn opponent team
+        for (int i = 0; i < opponentTeam.Count; i++)
+        {
+            GameObject prefab = GetPrefab(opponentTeam[i]);
+            if (prefab != null)
+                Instantiate(prefab, opponentSpawns[i].position, opponentSpawns[i].rotation);
+        }
+    }
+
+    List<CharacterType> GetOpponentTeam(List<CharacterType> playerTeam)
+    {
+        // All 6 characters
+        List<CharacterType> allCharacters = new List<CharacterType>
+        {
+            CharacterType.Phelsum,
+            CharacterType.oroboro,
+            CharacterType.carakara,
+            CharacterType.cerci,
+            CharacterType.mbenga,
+            CharacterType.ryuude
+        };
+
+        // Opponent gets whoever the player did NOT pick
+        List<CharacterType> opponentTeam = new List<CharacterType>();
+        foreach (CharacterType c in allCharacters)
+        {
+            if (!playerTeam.Contains(c))
+                opponentTeam.Add(c);
+        }
+
+        return opponentTeam;
     }
 
     GameObject GetPrefab(CharacterType type)
