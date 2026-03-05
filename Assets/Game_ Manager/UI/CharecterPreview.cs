@@ -4,8 +4,13 @@ using System.Collections.Generic;
 
 public class CharacterPreviewUI : MonoBehaviour
 {
-    [Header("3 Preview Slots (assign in order: slot 1, 2, 3)")]
-    public CharacterPreviewAnimator[] previewSlots; // size 3
+    [Header("Main Large Preview (single image shown on hover/click)")]
+    public CharacterPreviewAnimator mainPreview;
+
+    [Header("3 Team Slot Previews (fills left to right as selected)")]
+    public CharacterPreviewAnimator slotPreview1;
+    public CharacterPreviewAnimator slotPreview2;
+    public CharacterPreviewAnimator slotPreview3;
 
     [Header("Character Sprites")]
     public Sprite phelsumSprite;
@@ -15,19 +20,28 @@ public class CharacterPreviewUI : MonoBehaviour
     public Sprite mbengaSprite;
     public Sprite ryuudeSprite;
 
-    [Header("Empty Slot Sprite (optional)")]
-    public Sprite emptySlotSprite;
+    // Called by CharacterUIButton when clicked
+    public void ShowMainPreview(CharacterType type)
+    {
+        if (mainPreview != null)
+            mainPreview.ChangeSpriteAnimated(GetSprite(type));
+    }
 
+    // Called after any selection change to refresh the 3 slots
     public void RefreshPreviews()
     {
         List<CharacterType> selected = GameManager.Instance.selectedCharacters;
 
-        for (int i = 0; i < previewSlots.Length; i++)
+        CharacterPreviewAnimator[] slots = { slotPreview1, slotPreview2, slotPreview3 };
+
+        for (int i = 0; i < slots.Length; i++)
         {
+            if (slots[i] == null) continue;
+
             if (i < selected.Count)
-                previewSlots[i].ChangeSpriteAnimated(GetSprite(selected[i]));
+                slots[i].ChangeSpriteAnimated(GetSprite(selected[i]));
             else
-                previewSlots[i].ChangeSpriteAnimated(emptySlotSprite);
+                slots[i].ChangeSpriteAnimated(null); // clears the slot
         }
     }
 
@@ -41,7 +55,7 @@ public class CharacterPreviewUI : MonoBehaviour
             case CharacterType.cerci: return cerciSprite;
             case CharacterType.mbenga: return mbengaSprite;
             case CharacterType.ryuude: return ryuudeSprite;
-            default: return emptySlotSprite;
+            default: return null;
         }
     }
 }

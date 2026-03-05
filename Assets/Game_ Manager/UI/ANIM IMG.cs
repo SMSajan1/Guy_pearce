@@ -17,31 +17,34 @@ public class CharacterPreviewAnimator : MonoBehaviour
     {
         if (animationRoutine != null)
             StopCoroutine(animationRoutine);
-
         animationRoutine = StartCoroutine(AnimateChange(newSprite));
     }
 
     IEnumerator AnimateChange(Sprite newSprite)
     {
         float time = 0;
-
         Vector3 startScale = transform.localScale;
 
         // Fade OUT + Shrink
         while (time < animationDuration)
         {
             time += Time.deltaTime * fadeSpeed;
-
-            float t = time / animationDuration;
-
+            float t = Mathf.Clamp01(time / animationDuration);
             previewImage.color = new Color(1, 1, 1, 1 - t);
             transform.localScale = Vector3.Lerp(startScale, Vector3.one * 0.9f, t);
-
             yield return null;
         }
 
         // Change sprite
         previewImage.sprite = newSprite;
+
+        // If null sprite, hide the image entirely and stop
+        if (newSprite == null)
+        {
+            previewImage.color = new Color(1, 1, 1, 0);
+            transform.localScale = Vector3.one;
+            yield break;
+        }
 
         time = 0;
 
@@ -49,12 +52,9 @@ public class CharacterPreviewAnimator : MonoBehaviour
         while (time < animationDuration)
         {
             time += Time.deltaTime * fadeSpeed;
-
-            float t = time / animationDuration;
-
+            float t = Mathf.Clamp01(time / animationDuration);
             previewImage.color = new Color(1, 1, 1, t);
             transform.localScale = Vector3.Lerp(Vector3.one * scalePop, Vector3.one, t);
-
             yield return null;
         }
 
