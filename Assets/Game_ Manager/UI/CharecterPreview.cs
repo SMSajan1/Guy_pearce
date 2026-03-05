@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CharacterPreviewUI : MonoBehaviour
 {
-    [Header("Preview Animator")]
-    public CharacterPreviewAnimator previewAnimator;
+    [Header("3 Preview Slots (assign in order: slot 1, 2, 3)")]
+    public CharacterPreviewAnimator[] previewSlots; // size 3
 
     [Header("Character Sprites")]
     public Sprite phelsumSprite;
@@ -14,38 +15,33 @@ public class CharacterPreviewUI : MonoBehaviour
     public Sprite mbengaSprite;
     public Sprite ryuudeSprite;
 
-    public void ShowPreview(CharacterType type)
-    {
-        Sprite selectedSprite = null;
+    [Header("Empty Slot Sprite (optional)")]
+    public Sprite emptySlotSprite;
 
+    public void RefreshPreviews()
+    {
+        List<CharacterType> selected = GameManager.Instance.selectedCharacters;
+
+        for (int i = 0; i < previewSlots.Length; i++)
+        {
+            if (i < selected.Count)
+                previewSlots[i].ChangeSpriteAnimated(GetSprite(selected[i]));
+            else
+                previewSlots[i].ChangeSpriteAnimated(emptySlotSprite);
+        }
+    }
+
+    Sprite GetSprite(CharacterType type)
+    {
         switch (type)
         {
-            case CharacterType.Phelsum:
-                selectedSprite = phelsumSprite;
-                break;
-
-            case CharacterType.oroboro:
-                selectedSprite = oroboroSprite;
-                break;
-
-            case CharacterType.carakara:
-                selectedSprite = carakaraSprite;
-                break;
-
-            case CharacterType.cerci:
-                selectedSprite = cerciSprite;
-                break;
-            case CharacterType.mbenga:
-                selectedSprite = mbengaSprite;
-                break;
-            case CharacterType.ryuude:
-                selectedSprite = ryuudeSprite;
-                break;
-        }
-
-        if (selectedSprite != null && previewAnimator != null)
-        {
-            previewAnimator.ChangeSpriteAnimated(selectedSprite);
+            case CharacterType.Phelsum: return phelsumSprite;
+            case CharacterType.oroboro: return oroboroSprite;
+            case CharacterType.carakara: return carakaraSprite;
+            case CharacterType.cerci: return cerciSprite;
+            case CharacterType.mbenga: return mbengaSprite;
+            case CharacterType.ryuude: return ryuudeSprite;
+            default: return emptySlotSprite;
         }
     }
 }

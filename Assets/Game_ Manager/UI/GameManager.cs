@@ -1,27 +1,36 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public CharacterType selectedCharacter = CharacterType.None;
+    public List<CharacterType> selectedCharacters = new List<CharacterType>();
+    public const int MaxTeamSize = 3;
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SelectCharacter(CharacterType type)
+    public bool SelectCharacter(CharacterType type)
     {
-        selectedCharacter = type;
-        Debug.Log("Selected Character: " + type);
-    }
-}
+        // Deselect if already selected
+        if (selectedCharacters.Contains(type))
+        {
+            selectedCharacters.Remove(type);
+            return false; // returns false = deselected
+        }
 
+        // Don't allow more than 3
+        if (selectedCharacters.Count >= MaxTeamSize) return false;
+
+        selectedCharacters.Add(type);
+        return true; // returns true = selected
+    }
+
+    public bool IsSelected(CharacterType type) => selectedCharacters.Contains(type);
+    public bool IsTeamFull() => selectedCharacters.Count >= MaxTeamSize;
+}

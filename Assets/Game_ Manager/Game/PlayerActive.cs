@@ -1,57 +1,50 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerActivator : MonoBehaviour
 {
-    public GameObject phelsum;
-    public GameObject oroboro;
-    public GameObject carakara;
-    public GameObject cerci;
-    public GameObject mbenga;
-    public GameObject ryuude;
+    [Header("Character Prefabs")]
+    public GameObject phelsumPrefab;
+    public GameObject oroboroPrefab;
+    public GameObject carakaraPrefab;
+    public GameObject cerciPrefab;
+    public GameObject mbengaPrefab;
+    public GameObject ryuudePrefab;
 
+    [Header("Spawn Points (3 positions)")]
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Transform spawnPoint3;
 
     void Start()
     {
-        ActivateSelectedCharacter();
+        SpawnSelectedCharacters();
     }
 
-    void ActivateSelectedCharacter()
+    void SpawnSelectedCharacters()
     {
-        CharacterType selected = GameManager.Instance.selectedCharacter;
+        List<CharacterType> team = GameManager.Instance.selectedCharacters;
+        Transform[] spawnPoints = { spawnPoint1, spawnPoint2, spawnPoint3 };
 
-        phelsum.SetActive(false);
-        oroboro.SetActive(false);
-        carakara.SetActive(false);
-        cerci.SetActive(false);
-        mbenga.SetActive(false);
-        ryuude.SetActive(false);
-
-        switch (selected)
+        for (int i = 0; i < team.Count; i++)
         {
-            case CharacterType.Phelsum:
-                phelsum.SetActive(true);
-                break;
-
-            case CharacterType.oroboro:
-                oroboro.SetActive(true);
-                break;
-
-            case CharacterType.carakara:
-                carakara.SetActive(true);
-                break;
-
-            case CharacterType.cerci:
-                cerci.SetActive(true);
-                break;
-
-            case CharacterType.mbenga:
-                 mbenga.SetActive(true);
-                break;
-            case CharacterType.ryuude:
-                ryuude.SetActive(true);
-                break;
-
+            GameObject prefab = GetPrefab(team[i]);
+            if (prefab != null)
+                Instantiate(prefab, spawnPoints[i].position, spawnPoints[i].rotation);
         }
+    }
 
+    GameObject GetPrefab(CharacterType type)
+    {
+        switch (type)
+        {
+            case CharacterType.Phelsum: return phelsumPrefab;
+            case CharacterType.oroboro: return oroboroPrefab;
+            case CharacterType.carakara: return carakaraPrefab;
+            case CharacterType.cerci: return cerciPrefab;
+            case CharacterType.mbenga: return mbengaPrefab;
+            case CharacterType.ryuude: return ryuudePrefab;
+            default: return null;
+        }
     }
 }

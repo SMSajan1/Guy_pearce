@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class CharacterUIButton : MonoBehaviour
 {
     public CharacterType characterType;
-    public CharacterPreviewUI previewUI;   // NEW
+    public CharacterPreviewUI previewUI;
+
+    [Header("Selection Highlight")]
+    public GameObject selectedHighlight; // An outline/glow object on the button
 
     private Button button;
 
@@ -16,10 +19,13 @@ public class CharacterUIButton : MonoBehaviour
 
     void OnClick()
     {
-        // Save for Game Scene
-        GameManager.Instance.SelectCharacter(characterType);
+        bool isNowSelected = GameManager.Instance.SelectCharacter(characterType);
 
-        // Update UI Preview
-        previewUI.ShowPreview(characterType);
+        // Update highlight
+        if (selectedHighlight != null)
+            selectedHighlight.SetActive(isNowSelected);
+
+        // Update preview slots
+        previewUI.RefreshPreviews();
     }
 }

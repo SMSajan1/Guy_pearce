@@ -7,12 +7,11 @@ public class PlayButton : MonoBehaviour
 
     public void PlayGame()
     {
-        if (GameManager.Instance.selectedCharacter == CharacterType.None)
+        if (GameManager.Instance.selectedCharacters.Count < GameManager.MaxTeamSize)
         {
-            Debug.Log("Select Character First!");
+            Debug.Log("Select 3 characters first!");
             return;
         }
-
         SceneManager.LoadScene(gameSceneName);
     }
 }
