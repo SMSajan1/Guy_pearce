@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class CharacterPreviewUI : MonoBehaviour
 {
-    [Header("Main Large Preview (single image shown on hover/click)")]
+    [Header("Main Large Preview")]
     public CharacterPreviewAnimator mainPreview;
 
-    [Header("3 Team Slot Previews (fills left to right as selected)")]
-    public CharacterPreviewAnimator slotPreview1;
-    public CharacterPreviewAnimator slotPreview2;
-    public CharacterPreviewAnimator slotPreview3;
+    [Header("3 Team Slot Images")]
+    public Image slotPreview1;
+    public Image slotPreview2;
+    public Image slotPreview3;
 
     [Header("Character Sprites")]
     public Sprite phelsumSprite;
@@ -20,29 +20,46 @@ public class CharacterPreviewUI : MonoBehaviour
     public Sprite mbengaSprite;
     public Sprite ryuudeSprite;
 
-    // Called by CharacterUIButton when clicked
+    void Start()
+    {
+        // Clear all slots on start
+        ClearSlot(slotPreview1);
+        ClearSlot(slotPreview2);
+        ClearSlot(slotPreview3);
+    }
+
     public void ShowMainPreview(CharacterType type)
     {
         if (mainPreview != null)
             mainPreview.ChangeSpriteAnimated(GetSprite(type));
     }
 
-    // Called after any selection change to refresh the 3 slots
     public void RefreshPreviews()
     {
         List<CharacterType> selected = GameManager.Instance.selectedCharacters;
-
-        CharacterPreviewAnimator[] slots = { slotPreview1, slotPreview2, slotPreview3 };
+        Image[] slots = { slotPreview1, slotPreview2, slotPreview3 };
 
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] == null) continue;
 
             if (i < selected.Count)
-                slots[i].ChangeSpriteAnimated(GetSprite(selected[i]));
+            {
+                slots[i].sprite = GetSprite(selected[i]);
+                slots[i].color = Color.white; // make visible
+            }
             else
-                slots[i].ChangeSpriteAnimated(null); // clears the slot
+            {
+                ClearSlot(slots[i]);
+            }
         }
+    }
+
+    void ClearSlot(Image slot)
+    {
+        if (slot == null) return;
+        slot.sprite = null;
+        slot.color = new Color(1, 1, 1, 0); // invisible
     }
 
     Sprite GetSprite(CharacterType type)
