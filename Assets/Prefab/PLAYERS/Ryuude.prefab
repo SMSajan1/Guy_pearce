@@ -282,11 +282,11 @@ MonoBehaviour:
   hitDelay: 0.35
   animationLockTime: 0.9
   projectileSpeed: 15
-  Q_Damage: 10
-  E_Damage: 15
-  A_Damage: 12
-  D_Damage: 18
-  R_Damage: 25
+  Q_Damage: 2
+  E_Damage: 5
+  A_Damage: 7
+  D_Damage: 10
+  R_Damage: 15
   currentOpponentHealth: {fileID: 0}
 --- !u!114 &-9140968935175664169
 MonoBehaviour:
