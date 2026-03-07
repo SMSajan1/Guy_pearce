@@ -52,12 +52,15 @@ public class GuyPearceAbilityController : MonoBehaviour
         if (!isPlayer) return;
         if (isBusy) return;
 
-        if (Input.GetKeyDown(KeyCode.Q)) TriggerAbility("Q");
-        if (Input.GetKeyDown(KeyCode.E)) TriggerAbility("E");
-        if (Input.GetKeyDown(KeyCode.A)) TriggerAbility("A");
-        if (Input.GetKeyDown(KeyCode.D)) TriggerAbility("D");
-        if (Input.GetKeyDown(KeyCode.R)) TriggerAbility("R");
+        if (Input.GetKeyDown(KeyCode.Q) && EffortBar.Instance.TryUseAbility("Q")) TriggerAbility("Q");
+        if (Input.GetKeyDown(KeyCode.E) && EffortBar.Instance.TryUseAbility("E")) TriggerAbility("E");
+        if (Input.GetKeyDown(KeyCode.A) && EffortBar.Instance.TryUseAbility("A")) TriggerAbility("A");
+        if (Input.GetKeyDown(KeyCode.D) && EffortBar.Instance.TryUseAbility("D")) TriggerAbility("D");
+        if (Input.GetKeyDown(KeyCode.R) && EffortBar.Instance.TryUseAbility("R")) TriggerAbility("R");
     }
+
+
+
 
     public void TriggerAbility(string key)
     {
