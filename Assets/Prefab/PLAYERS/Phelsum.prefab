@@ -351,6 +351,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6615183908614141489}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7489751540334209619}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0106452be9b684c954b586623011b6, type: 3}
 --- !u!137 &4019788311812139834 stripped
 SkinnedMeshRenderer:
@@ -424,6 +427,12 @@ MonoBehaviour:
   hitDelay: 0.4
   animationLockTime: 0.9
   projectileSpeed: 12
+  Q_Damage: 10
+  E_Damage: 15
+  A_Damage: 12
+  D_Damage: 18
+  R_Damage: 25
+  currentOpponentHealth: {fileID: 0}
 --- !u!114 &-6615183908614141489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +447,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAttackInterval: 1.5
   maxAttackInterval: 3.5
+--- !u!114 &7489751540334209619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691036227664597800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419d9efe4c942934d9a1d9dd87268d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  isPlayer: 1
 --- !u!4 &9094796592637901535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3742407835892290726, guid: 1d0106452be9b684c954b586623011b6, type: 3}

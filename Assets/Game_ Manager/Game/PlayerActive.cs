@@ -11,12 +11,12 @@ public class PlayerActivator : MonoBehaviour
     public GameObject mbengaPrefab;
     public GameObject ryuudePrefab;
 
-    [Header("Player Spawn Points (3 positions)")]
+    [Header("Player Spawn Points")]
     public Transform playerSpawn1;
     public Transform playerSpawn2;
     public Transform playerSpawn3;
 
-    [Header("Opponent Spawn Points (3 positions)")]
+    [Header("Opponent Spawn Points")]
     public Transform opponentSpawn1;
     public Transform opponentSpawn2;
     public Transform opponentSpawn3;
@@ -34,6 +34,9 @@ public class PlayerActivator : MonoBehaviour
         Transform[] playerSpawns = { playerSpawn1, playerSpawn2, playerSpawn3 };
         Transform[] opponentSpawns = { opponentSpawn1, opponentSpawn2, opponentSpawn3 };
 
+        List<CharacterHealth> spawnedPlayers = new List<CharacterHealth>();
+        List<CharacterHealth> spawnedEnemies = new List<CharacterHealth>();
+
         // Spawn player team
         for (int i = 0; i < playerTeam.Count; i++)
         {
@@ -42,15 +45,18 @@ public class PlayerActivator : MonoBehaviour
             {
                 GameObject go = Instantiate(prefab, playerSpawns[i].position, playerSpawns[i].rotation);
 
-                // Set as player
-                GuyPearceAbilityController controller = go.GetComponent<GuyPearceAbilityController>();
-                if (controller != null)
-                    controller.isPlayer = true;
+                GuyPearceAbilityController ctrl = go.GetComponent<GuyPearceAbilityController>();
+                if (ctrl != null) ctrl.isPlayer = true;
 
-                // Disable EnemyAI on player characters
                 EnemyAI ai = go.GetComponent<EnemyAI>();
-                if (ai != null)
-                    ai.enabled = false;
+                if (ai != null) ai.enabled = false;
+
+                CharacterHealth health = go.GetComponent<CharacterHealth>();
+                if (health != null)
+                {
+                    health.isPlayer = true;
+                    spawnedPlayers.Add(health);
+                }
             }
         }
 
@@ -62,39 +68,38 @@ public class PlayerActivator : MonoBehaviour
             {
                 GameObject go = Instantiate(prefab, opponentSpawns[i].position, opponentSpawns[i].rotation);
 
-                // Set as opponent
-                GuyPearceAbilityController controller = go.GetComponent<GuyPearceAbilityController>();
-                if (controller != null)
-                    controller.isPlayer = false;
+                GuyPearceAbilityController ctrl = go.GetComponent<GuyPearceAbilityController>();
+                if (ctrl != null) ctrl.isPlayer = false;
 
-                // Make sure EnemyAI is enabled on opponents
                 EnemyAI ai = go.GetComponent<EnemyAI>();
-                if (ai != null)
-                    ai.enabled = true;
+                if (ai != null) ai.enabled = true;
+
+                CharacterHealth health = go.GetComponent<CharacterHealth>();
+                if (health != null)
+                {
+                    health.isPlayer = false;
+                    spawnedEnemies.Add(health);
+                }
             }
         }
+
+        // Hand teams to BattleManager
+        BattleManager.Instance.InitTeams(spawnedPlayers, spawnedEnemies);
     }
 
     List<CharacterType> GetOpponentTeam(List<CharacterType> playerTeam)
     {
-        List<CharacterType> allCharacters = new List<CharacterType>
+        List<CharacterType> all = new List<CharacterType>
         {
-            CharacterType.Phelsum,
-            CharacterType.oroboro,
-            CharacterType.carakara,
-            CharacterType.cerci,
-            CharacterType.mbenga,
-            CharacterType.ryuude
+            CharacterType.Phelsum, CharacterType.oroboro, CharacterType.carakara,
+            CharacterType.cerci,   CharacterType.mbenga,  CharacterType.ryuude
         };
 
-        List<CharacterType> opponentTeam = new List<CharacterType>();
-        foreach (CharacterType c in allCharacters)
-        {
-            if (!playerTeam.Contains(c))
-                opponentTeam.Add(c);
-        }
+        List<CharacterType> opponents = new List<CharacterType>();
+        foreach (CharacterType c in all)
+            if (!playerTeam.Contains(c)) opponents.Add(c);
 
-        return opponentTeam;
+        return opponents;
     }
 
     GameObject GetPrefab(CharacterType type)

@@ -7,7 +7,7 @@ public class GuyPearceAbilityController : MonoBehaviour
     public CharacterType characterType;
 
     [Header("Player or Enemy")]
-    public bool isPlayer = true; // TRUE for your team, FALSE for opponents
+    public bool isPlayer = true;
 
     [Header("Animators")]
     public Animator animator;
@@ -36,11 +36,19 @@ public class GuyPearceAbilityController : MonoBehaviour
     [Header("Projectile")]
     public float projectileSpeed = 15f;
 
+    [Header("Ability Damage (Q / E / A / D / R)")]
+    public float Q_Damage = 5f;
+    public float E_Damage = 5f;
+    public float A_Damage = 5f;
+    public float D_Damage = 5f;
+    public float R_Damage = 5f;
+
+    [HideInInspector] public CharacterHealth currentOpponentHealth;
+
     private bool isBusy;
 
     void Update()
     {
-        // ONLY player-controlled characters respond to input
         if (!isPlayer) return;
         if (isBusy) return;
 
@@ -53,61 +61,68 @@ public class GuyPearceAbilityController : MonoBehaviour
 
     public void TriggerAbility(string key)
     {
+        float damage = 5f;
+        if (key == "Q") damage = Q_Damage;
+        else if (key == "E") damage = E_Damage;
+        else if (key == "A") damage = A_Damage;
+        else if (key == "D") damage = D_Damage;
+        else if (key == "R") damage = R_Damage;
+
         switch (characterType)
         {
             case CharacterType.PHELSUM:
-                if (key == "Q") StartCoroutine(Ability("SparkDazzle", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false));
-                if (key == "E") StartCoroutine(Ability("Thunderbox", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
-                if (key == "A") StartCoroutine(Ability("ArcDischarge", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
-                if (key == "D") StartCoroutine(Ability("InducedCurrent", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true));
-                if (key == "R") StartCoroutine(Ability("VoltageSpike", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true));
+                if (key == "Q") StartCoroutine(Ability("SparkDazzle", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false, damage));
+                if (key == "E") StartCoroutine(Ability("Thunderbox", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false, damage));
+                if (key == "A") StartCoroutine(Ability("ArcDischarge", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true, damage));
+                if (key == "D") StartCoroutine(Ability("InducedCurrent", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true, damage));
+                if (key == "R") StartCoroutine(Ability("VoltageSpike", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentHead, "Hit_5", true, damage));
                 break;
 
             case CharacterType.OROBORO:
-                if (key == "Q") StartCoroutine(Ability("AnthelionBlast", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false));
-                if (key == "E") StartCoroutine(Ability("CrownFire", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false));
-                if (key == "A") StartCoroutine(Ability("Combust", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true));
-                if (key == "D") StartCoroutine(Ability("Tunnel", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
-                if (key == "R") StartCoroutine(Ability("RedFlag", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
+                if (key == "Q") StartCoroutine(Ability("AnthelionBlast", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentHead, "Hit_1", false, damage));
+                if (key == "E") StartCoroutine(Ability("CrownFire", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentHead, "Hit_2", false, damage));
+                if (key == "A") StartCoroutine(Ability("Combust", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentHead, "Hit_3", true, damage));
+                if (key == "D") StartCoroutine(Ability("Tunnel", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false, damage));
+                if (key == "R") StartCoroutine(Ability("RedFlag", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false, damage));
                 break;
 
             case CharacterType.CARAKARA:
-                if (key == "Q") StartCoroutine(Ability("Squall", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
-                if (key == "E") StartCoroutine(Ability("Aerodynamic", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false));
-                if (key == "A") StartCoroutine(Ability("DeftSwipe", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", false));
-                if (key == "D") StartCoroutine(Ability("JetMax", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
-                if (key == "R") StartCoroutine(Ability("Intensify", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
+                if (key == "Q") StartCoroutine(Ability("Squall", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true, damage));
+                if (key == "E") StartCoroutine(Ability("Aerodynamic", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false, damage));
+                if (key == "A") StartCoroutine(Ability("DeftSwipe", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", false, damage));
+                if (key == "D") StartCoroutine(Ability("JetMax", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false, damage));
+                if (key == "R") StartCoroutine(Ability("Intensify", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false, damage));
                 break;
 
             case CharacterType.CERCI:
-                if (key == "Q") StartCoroutine(Ability("Downdraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", false));
-                if (key == "E") StartCoroutine(Ability("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true));
-                if (key == "A") StartCoroutine(Ability("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
-                if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
-                if (key == "R") StartCoroutine(Ability("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
+                if (key == "Q") StartCoroutine(Ability("Downdraft", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", false, damage));
+                if (key == "E") StartCoroutine(Ability("Bluster", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true, damage));
+                if (key == "A") StartCoroutine(Ability("RainBandLash", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true, damage));
+                if (key == "D") StartCoroutine(Ability("SeededCloud", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false, damage));
+                if (key == "R") StartCoroutine(Ability("StrongBreeze", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false, damage));
                 break;
 
             case CharacterType.MBENGA:
-                if (key == "Q") StartCoroutine(Ability("MeteoricWater", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
-                if (key == "E") StartCoroutine(Ability("Waterlog", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false));
-                if (key == "A") StartCoroutine(Ability("Torrent", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
-                if (key == "D") StartCoroutine(Ability("DewPoint", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false));
-                if (key == "R") StartCoroutine(Ability("BrumousDance", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false));
+                if (key == "Q") StartCoroutine(Ability("MeteoricWater", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true, damage));
+                if (key == "E") StartCoroutine(Ability("Waterlog", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", false, damage));
+                if (key == "A") StartCoroutine(Ability("Torrent", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true, damage));
+                if (key == "D") StartCoroutine(Ability("DewPoint", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", false, damage));
+                if (key == "R") StartCoroutine(Ability("BrumousDance", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", false, damage));
                 break;
 
             case CharacterType.RYUUDE:
-                if (key == "Q") StartCoroutine(Ability("MulticellVolley", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true));
-                if (key == "E") StartCoroutine(Ability("CoronalRain", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true));
-                if (key == "A") StartCoroutine(Ability("SevereStorm", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true));
-                if (key == "D") StartCoroutine(Ability("ToxicShot", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true));
-                if (key == "R") StartCoroutine(Ability("SolarDynamo", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", true));
+                if (key == "Q") StartCoroutine(Ability("MulticellVolley", Q_CastVFX, Q_CastOffset, Q_HitVFX, Q_HitOffset, opponentBody, "Hit_1", true, damage));
+                if (key == "E") StartCoroutine(Ability("CoronalRain", E_CastVFX, E_CastOffset, E_HitVFX, E_HitOffset, opponentBody, "Hit_2", true, damage));
+                if (key == "A") StartCoroutine(Ability("SevereStorm", A_CastVFX, A_CastOffset, A_HitVFX, A_HitOffset, opponentBody, "Hit_3", true, damage));
+                if (key == "D") StartCoroutine(Ability("ToxicShot", D_CastVFX, D_CastOffset, D_HitVFX, D_HitOffset, opponentBody, "Hit_4", true, damage));
+                if (key == "R") StartCoroutine(Ability("SolarDynamo", R_CastVFX, R_CastOffset, R_HitVFX, R_HitOffset, opponentBody, "Hit_5", true, damage));
                 break;
         }
     }
 
     IEnumerator Ability(string anim, GameObject castFx, Vector3 castOffset,
         GameObject hitFx, Vector3 hitOffset, Transform hitPoint,
-        string opponentHitTrigger, bool projectile)
+        string opponentHitTrigger, bool projectile, float damage)
     {
         isBusy = true;
 
@@ -117,6 +132,12 @@ public class GuyPearceAbilityController : MonoBehaviour
             Instantiate(castFx, transform.TransformPoint(castOffset), transform.rotation);
 
         yield return new WaitForSeconds(hitDelay);
+
+        // Always deal damage directly via BattleManager — no broken references
+        if (isPlayer)
+            BattleManager.Instance.DamageActiveEnemy(damage);
+        else
+            BattleManager.Instance.DamageActivePlayer(damage);
 
         if (hitFx && hitPoint != null)
         {

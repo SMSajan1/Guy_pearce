@@ -104,6 +104,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8af38c2282739d64f828aa3eb99106a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6635061521697554889}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8af38c2282739d64f828aa3eb99106a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8987976499131598096}
   m_SourcePrefab: {fileID: 100100000, guid: 8af38c2282739d64f828aa3eb99106a5, type: 3}
 --- !u!4 &4843809613031393142 stripped
 Transform:
@@ -177,6 +180,12 @@ MonoBehaviour:
   hitDelay: 0.4
   animationLockTime: 0.9
   projectileSpeed: 12
+  Q_Damage: 10
+  E_Damage: 15
+  A_Damage: 12
+  D_Damage: 18
+  R_Damage: 25
+  currentOpponentHealth: {fileID: 0}
 --- !u!114 &-6635061521697554889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +200,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAttackInterval: 1.5
   maxAttackInterval: 3.5
+--- !u!114 &8987976499131598096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220652188827360716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419d9efe4c942934d9a1d9dd87268d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  isPlayer: 1
 --- !u!1001 &8580931835471756027
 PrefabInstance:
   m_ObjectHideFlags: 0

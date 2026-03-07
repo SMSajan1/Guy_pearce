@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 4141336569460585714}
   - component: {fileID: 4717577424924101059}
   - component: {fileID: -7473568733097030965}
+  - component: {fileID: -4021635102266108243}
   m_Layer: 0
   m_Name: cerci
   m_TagString: Untagged
@@ -1018,6 +1019,12 @@ MonoBehaviour:
   hitDelay: 0.35
   animationLockTime: 0.9
   projectileSpeed: 12
+  Q_Damage: 10
+  E_Damage: 15
+  A_Damage: 12
+  D_Damage: 18
+  R_Damage: 25
+  currentOpponentHealth: {fileID: 0}
 --- !u!114 &-7473568733097030965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,6 +1039,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAttackInterval: 1.5
   maxAttackInterval: 3.5
+--- !u!114 &-4021635102266108243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581070804224448297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419d9efe4c942934d9a1d9dd87268d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  isPlayer: 1
 --- !u!1 &7344620938169604758
 GameObject:
   m_ObjectHideFlags: 0
