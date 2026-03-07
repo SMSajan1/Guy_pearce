@@ -122,7 +122,6 @@ public class BattleManager : MonoBehaviour
     {
         if (character == activePlayer)
         {
-            // Destroy the dead player
             Destroy(activePlayer.gameObject);
             activePlayer = null;
 
@@ -131,21 +130,31 @@ public class BattleManager : MonoBehaviour
             if (playerIndex >= playerTeam.Count)
             {
                 Debug.Log("GAME OVER — Enemy Wins!");
-                // TODO: Show game over screen
                 return;
             }
 
             // Bring next player into ring
             SetActivePlayer(playerIndex);
 
-            // Re-link new player to current enemy
+            // Re-link player's ability controller to current enemy
             GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
             if (ctrl != null)
                 ctrl.currentOpponentHealth = activeEnemy;
+
+            // *** Tell EnemyAI to target the NEW player ***
+            if (activeEnemy != null)
+            {
+                EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
+                if (ai != null)
+                    ai.SetTarget(activePlayer);
+
+                GuyPearceAbilityController enemyCtrl = activeEnemy.GetComponent<GuyPearceAbilityController>();
+                if (enemyCtrl != null)
+                    enemyCtrl.currentOpponentHealth = activePlayer;
+            }
         }
         else if (character == activeEnemy)
         {
-            // Destroy the dead enemy
             Destroy(activeEnemy.gameObject);
             activeEnemy = null;
 
@@ -154,7 +163,6 @@ public class BattleManager : MonoBehaviour
             if (enemyIndex >= enemyTeam.Count)
             {
                 Debug.Log("GAME OVER — Player Wins!");
-                // TODO: Show victory screen
                 return;
             }
 
@@ -162,11 +170,12 @@ public class BattleManager : MonoBehaviour
             SetActiveEnemy(enemyIndex);
 
             // Re-link current player to new enemy
-            GuyPearceAbilityController ctrl = activePlayer != null
-                ? activePlayer.GetComponent<GuyPearceAbilityController>()
-                : null;
-            if (ctrl != null)
-                ctrl.currentOpponentHealth = activeEnemy;
+            if (activePlayer != null)
+            {
+                GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
+                if (ctrl != null)
+                    ctrl.currentOpponentHealth = activeEnemy;
+            }
         }
     }
 }
