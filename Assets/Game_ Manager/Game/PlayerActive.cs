@@ -39,7 +39,19 @@ public class PlayerActivator : MonoBehaviour
         {
             GameObject prefab = GetPrefab(playerTeam[i]);
             if (prefab != null)
-                Instantiate(prefab, playerSpawns[i].position, playerSpawns[i].rotation);
+            {
+                GameObject go = Instantiate(prefab, playerSpawns[i].position, playerSpawns[i].rotation);
+
+                // Set as player
+                GuyPearceAbilityController controller = go.GetComponent<GuyPearceAbilityController>();
+                if (controller != null)
+                    controller.isPlayer = true;
+
+                // Disable EnemyAI on player characters
+                EnemyAI ai = go.GetComponent<EnemyAI>();
+                if (ai != null)
+                    ai.enabled = false;
+            }
         }
 
         // Spawn opponent team
@@ -47,13 +59,24 @@ public class PlayerActivator : MonoBehaviour
         {
             GameObject prefab = GetPrefab(opponentTeam[i]);
             if (prefab != null)
-                Instantiate(prefab, opponentSpawns[i].position, opponentSpawns[i].rotation);
+            {
+                GameObject go = Instantiate(prefab, opponentSpawns[i].position, opponentSpawns[i].rotation);
+
+                // Set as opponent
+                GuyPearceAbilityController controller = go.GetComponent<GuyPearceAbilityController>();
+                if (controller != null)
+                    controller.isPlayer = false;
+
+                // Make sure EnemyAI is enabled on opponents
+                EnemyAI ai = go.GetComponent<EnemyAI>();
+                if (ai != null)
+                    ai.enabled = true;
+            }
         }
     }
 
     List<CharacterType> GetOpponentTeam(List<CharacterType> playerTeam)
     {
-        // All 6 characters
         List<CharacterType> allCharacters = new List<CharacterType>
         {
             CharacterType.Phelsum,
@@ -64,7 +87,6 @@ public class PlayerActivator : MonoBehaviour
             CharacterType.ryuude
         };
 
-        // Opponent gets whoever the player did NOT pick
         List<CharacterType> opponentTeam = new List<CharacterType>();
         foreach (CharacterType c in allCharacters)
         {

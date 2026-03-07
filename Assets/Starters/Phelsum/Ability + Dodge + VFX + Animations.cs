@@ -6,6 +6,9 @@ public class GuyPearceAbilityController : MonoBehaviour
     public enum CharacterType { PHELSUM, OROBORO, CARAKARA, CERCI, MBENGA, RYUUDE }
     public CharacterType characterType;
 
+    [Header("Player or Enemy")]
+    public bool isPlayer = true; // TRUE for your team, FALSE for opponents
+
     [Header("Animators")]
     public Animator animator;
     public Animator opponentAnimator;
@@ -37,6 +40,8 @@ public class GuyPearceAbilityController : MonoBehaviour
 
     void Update()
     {
+        // ONLY player-controlled characters respond to input
+        if (!isPlayer) return;
         if (isBusy) return;
 
         if (Input.GetKeyDown(KeyCode.Q)) TriggerAbility("Q");
@@ -46,7 +51,7 @@ public class GuyPearceAbilityController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) TriggerAbility("R");
     }
 
-    void TriggerAbility(string key)
+    public void TriggerAbility(string key)
     {
         switch (characterType)
         {
@@ -120,11 +125,9 @@ public class GuyPearceAbilityController : MonoBehaviour
                 Vector3 spawnPos = transform.TransformPoint(castOffset);
                 Vector3 targetPos = hitPoint.TransformPoint(hitOffset);
 
-                // Face the target on spawn
                 Quaternion spawnRot = Quaternion.LookRotation((targetPos - spawnPos).normalized);
                 GameObject proj = Instantiate(hitFx, spawnPos, spawnRot);
 
-                // Opponent reacts on IMPACT, not on cast
                 StartCoroutine(MoveProjectile(proj, targetPos, () =>
                 {
                     if (opponentAnimator)
@@ -144,7 +147,6 @@ public class GuyPearceAbilityController : MonoBehaviour
         isBusy = false;
     }
 
-    // Callback fires when projectile reaches target
     IEnumerator MoveProjectile(GameObject fx, Vector3 target, System.Action onImpact = null)
     {
         if (fx == null) yield break;
