@@ -13403,9 +13403,9 @@ MonoBehaviour:
   playerBenchSpawn2: {fileID: 952177024}
   enemyBenchSpawn1: {fileID: 111704202}
   enemyBenchSpawn2: {fileID: 707823614}
-  swapButton1: {fileID: 0}
-  swapButton2: {fileID: 0}
-  swapButton3: {fileID: 0}
+  swapButton1: {fileID: 1889257129}
+  swapButton2: {fileID: 1332869516}
+  swapButton3: {fileID: 662432014}
   playerTeam: []
   enemyTeam: []
 --- !u!4 &2123937245

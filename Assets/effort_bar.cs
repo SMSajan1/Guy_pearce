@@ -25,11 +25,11 @@ public class EffortBar : MonoBehaviour
     private Vector3 originalSliderPos;
     private bool isShaking = false;
 
-    public const float Q_Cost = 5f;
-    public const float E_Cost = 10f;
-    public const float A_Cost = 15f;
-    public const float D_Cost = 40f;
-    public const float R_Cost = 60f;
+    public const float Q_Cost = 2f;
+    public const float E_Cost = 5f;
+    public const float A_Cost = 10f;
+    public const float D_Cost = 20f;
+    public const float R_Cost = 50f;
 
     void Awake()
     {
