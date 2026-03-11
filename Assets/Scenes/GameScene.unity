@@ -11578,8 +11578,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effortSlider: {fileID: 1115760208}
+  fillImage: {fileID: 0}
   maxEffort: 100
   fillRatePerSecond: 4
+  shakeDuration: 0.3
+  shakeMagnitude: 8
+  flashColor: {r: 1, g: 0.2, b: 0.2, a: 1}
+  flashDuration: 0.3
 --- !u!4 &1874227634
 Transform:
   m_ObjectHideFlags: 0
@@ -12992,9 +12997,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f80d7e16c8419154e8fd7a012bb84154, type: 2}
     - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6aae4f477fd16e74db6475785c4752b5, type: 2}
+    - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f80d7e16c8419154e8fd7a012bb84154, type: 2}
+    - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 38de6b44d08a91d4485aad20f3ac314c, type: 2}
+      objectReference: {fileID: 2100000, guid: 6aae4f477fd16e74db6475785c4752b5, type: 2}
     - target: {fileID: 7323450795887845568, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -13002,7 +13015,7 @@ PrefabInstance:
     - target: {fileID: 8269831023258352735, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a2bdccc8311e9634fb46d63685466b39, type: 2}
+      objectReference: {fileID: 2100000, guid: 77e146c2f22f11e4bbe97a623067e4ca, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2878434251247468819, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
