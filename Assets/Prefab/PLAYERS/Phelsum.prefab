@@ -354,6 +354,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7489751540334209619}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d0106452be9b684c954b586623011b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3807957843719534332}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0106452be9b684c954b586623011b6, type: 3}
 --- !u!137 &4019788311812139834 stripped
 SkinnedMeshRenderer:
@@ -462,6 +465,22 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   isPlayer: 1
+--- !u!114 &-3807957843719534332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691036227664597800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c073fdcc7d2f74aa2c31be29afb9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldDuration: 3
+  shieldCooldown: 8
+  shieldPrefab: {fileID: 7360748289898461958, guid: 891eb2258bb8dd843ae0917288e40437, type: 3}
+  shieldOffset: {x: 0, y: 0.82, z: 0}
 --- !u!4 &9094796592637901535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3742407835892290726, guid: 1d0106452be9b684c954b586623011b6, type: 3}

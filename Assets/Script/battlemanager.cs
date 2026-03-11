@@ -75,6 +75,12 @@ public class BattleManager : MonoBehaviour
         GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
         if (ctrl != null && activeEnemy != null)
             ctrl.currentOpponentHealth = activeEnemy;
+
+        // Re-register shield controller for new active player
+        ShieldController shield = activePlayer.GetComponent<ShieldController>();
+        // Shield is already on the character, nothing extra needed —
+        // ShieldUI will be triggered by the new character automatically
+
     }
 
     void SetActiveEnemy(int index)

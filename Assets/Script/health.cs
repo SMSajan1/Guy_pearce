@@ -12,20 +12,28 @@ public class CharacterHealth : MonoBehaviour
     public bool isPlayer = true;
 
     private bool isDead = false;
+    private ShieldController shieldController;
 
     void Start()
     {
         currentHealth = maxHealth;
+        shieldController = GetComponent<ShieldController>();
     }
 
     public void TakeDamage(float amount)
     {
         if (isDead) return;
 
+        // Block damage if shield is active
+        if (shieldController != null && shieldController.IsShielded())
+        {
+            Debug.Log(gameObject.name + " blocked damage with shield!");
+            return;
+        }
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        // Notify BattleManager to update the UI
         BattleManager.Instance.OnCharacterDamaged(this);
 
         if (currentHealth <= 0)

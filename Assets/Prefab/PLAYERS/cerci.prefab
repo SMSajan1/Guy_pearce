@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 4717577424924101059}
   - component: {fileID: -7473568733097030965}
   - component: {fileID: -4021635102266108243}
+  - component: {fileID: 2813900373626890573}
   m_Layer: 0
   m_Name: cerci
   m_TagString: Untagged
@@ -1054,6 +1055,22 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   isPlayer: 1
+--- !u!114 &2813900373626890573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581070804224448297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c073fdcc7d2f74aa2c31be29afb9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldDuration: 3
+  shieldCooldown: 8
+  shieldPrefab: {fileID: 7360748289898461958, guid: 891eb2258bb8dd843ae0917288e40437, type: 3}
+  shieldOffset: {x: 0, y: 0.82, z: 0}
 --- !u!1 &7344620938169604758
 GameObject:
   m_ObjectHideFlags: 0
