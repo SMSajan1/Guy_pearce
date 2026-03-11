@@ -37,7 +37,6 @@ public class BattleManager : MonoBehaviour
     private int playerIndex = 0;
     private int enemyIndex = 0;
 
-    // Bench positions for quick lookup
     private Transform[] benchSpawns;
 
     void Awake()
@@ -60,18 +59,50 @@ public class BattleManager : MonoBehaviour
 
     void PositionBench()
     {
-        // Position all non-active players on bench
+        // Bench player characters — disable their controllers
         for (int i = 1; i < playerTeam.Count; i++)
         {
             if (playerTeam[i] != null && !playerTeam[i].IsDead())
+            {
                 playerTeam[i].transform.position = benchSpawns[i - 1].position;
+                DisableCharacter(playerTeam[i].gameObject, isEnemy: false);
+            }
         }
 
         Transform[] enemyBenches = { enemyBenchSpawn1, enemyBenchSpawn2 };
         for (int i = 1; i < enemyTeam.Count; i++)
         {
             if (enemyTeam[i] != null)
+            {
                 enemyTeam[i].transform.position = enemyBenches[i - 1].position;
+                DisableCharacter(enemyTeam[i].gameObject, isEnemy: true);
+            }
+        }
+    }
+
+    // Disables ability controller and AI on a character
+    void DisableCharacter(GameObject go, bool isEnemy)
+    {
+        GuyPearceAbilityController ctrl = go.GetComponent<GuyPearceAbilityController>();
+        if (ctrl != null) ctrl.enabled = false;
+
+        if (isEnemy)
+        {
+            EnemyAI ai = go.GetComponent<EnemyAI>();
+            if (ai != null) ai.enabled = false;
+        }
+    }
+
+    // Enables ability controller and AI on a character
+    void EnableCharacter(GameObject go, bool isEnemy)
+    {
+        GuyPearceAbilityController ctrl = go.GetComponent<GuyPearceAbilityController>();
+        if (ctrl != null) ctrl.enabled = true;
+
+        if (isEnemy)
+        {
+            EnemyAI ai = go.GetComponent<EnemyAI>();
+            if (ai != null) ai.enabled = true;
         }
     }
 
@@ -85,12 +116,13 @@ public class BattleManager : MonoBehaviour
 
         activePlayer.transform.position = playerRingSpawn.position;
 
-        // Update UI with THIS character's current health (preserved)
+        // Enable this character's controller
+        EnableCharacter(activePlayer.gameObject, isEnemy: false);
+
         playerNameText.text = activePlayer.gameObject.name;
         playerHealthSlider.maxValue = activePlayer.maxHealth;
         playerHealthSlider.value = activePlayer.currentHealth;
 
-        // Link ability controller to current enemy
         GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
         if (ctrl != null && activeEnemy != null)
             ctrl.currentOpponentHealth = activeEnemy;
@@ -105,6 +137,9 @@ public class BattleManager : MonoBehaviour
 
         activeEnemy.transform.position = enemyRingSpawn.position;
 
+        // Enable this enemy's controller and AI
+        EnableCharacter(activeEnemy.gameObject, isEnemy: true);
+
         enemyNameText.text = activeEnemy.gameObject.name;
         enemyHealthSlider.maxValue = activeEnemy.maxHealth;
         enemyHealthSlider.value = activeEnemy.currentHealth;
@@ -118,37 +153,30 @@ public class BattleManager : MonoBehaviour
             ai.SetTarget(activePlayer);
     }
 
-    // Called by swap buttons — pass 0, 1, or 2
     public void SwapToPlayer(int index)
     {
-        // Can't swap to same character
         if (index == playerIndex) return;
-
-        // Can't swap to a dead character
         if (playerTeam[index] == null || playerTeam[index].IsDead())
         {
             Debug.Log("That character is dead!");
             return;
         }
 
-        // Send current active player to bench
-        int oldIndex = playerIndex;
+        // Disable and bench the current active player
         CharacterHealth oldPlayer = activePlayer;
+        int oldIndex = playerIndex;
 
-        // Find which bench slot the new character was on
-        // and send old player there
-        int benchSlot = index - 1; // index 1 = bench 0, index 2 = bench 1
-        if (index < oldIndex) benchSlot = oldIndex - 1;
-
-        // Move old player to a bench position
-        Transform targetBench = GetBenchSpawnForIndex(oldIndex, index);
         if (oldPlayer != null)
-            oldPlayer.transform.position = targetBench.position;
+        {
+            DisableCharacter(oldPlayer.gameObject, isEnemy: false);
+            Transform bench = GetBenchSpawnForIndex(oldIndex, index);
+            oldPlayer.transform.position = bench.position;
+        }
 
         // Bring new player into ring
         SetActivePlayer(index);
 
-        // Update enemy targets to new player
+        // Update enemy targets
         if (activeEnemy != null)
         {
             EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
@@ -161,21 +189,16 @@ public class BattleManager : MonoBehaviour
         RefreshSwapButtons();
     }
 
-    // Figures out which bench position to send the old player to
     Transform GetBenchSpawnForIndex(int oldIndex, int newIndex)
     {
-        // Collect bench slots not occupied by the incoming character
         List<int> benchIndices = new List<int>();
         for (int i = 0; i < playerTeam.Count; i++)
-        {
             if (i != newIndex) benchIndices.Add(i);
-        }
 
         int slot = benchIndices.IndexOf(oldIndex);
         return slot == 0 ? playerBenchSpawn1 : playerBenchSpawn2;
     }
 
-    // Grey out the active character button and dead character buttons
     void RefreshSwapButtons()
     {
         GameObject[] buttons = { swapButton1, swapButton2, swapButton3 };
@@ -222,9 +245,7 @@ public class BattleManager : MonoBehaviour
             playerTeam[playerIndex] = null;
             activePlayer = null;
 
-            // Find next alive player
             int nextIndex = FindNextAlivePlayer();
-
             if (nextIndex == -1)
             {
                 Debug.Log("GAME OVER — Enemy Wins!");
@@ -255,7 +276,6 @@ public class BattleManager : MonoBehaviour
             activeEnemy = null;
 
             enemyIndex++;
-
             if (enemyIndex >= enemyTeam.Count)
             {
                 Debug.Log("GAME OVER — Player Wins!");
@@ -275,10 +295,7 @@ public class BattleManager : MonoBehaviour
     int FindNextAlivePlayer()
     {
         for (int i = 0; i < playerTeam.Count; i++)
-        {
-            if (playerTeam[i] != null && !playerTeam[i].IsDead())
-                return i;
-        }
+            if (playerTeam[i] != null && !playerTeam[i].IsDead()) return i;
         return -1;
     }
 }
