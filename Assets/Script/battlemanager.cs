@@ -115,17 +115,15 @@ public class BattleManager : MonoBehaviour
         playerIndex = index;
 
         activePlayer.transform.position = playerRingSpawn.position;
-
-        // Enable this character's controller
         EnableCharacter(activePlayer.gameObject, isEnemy: false);
 
         playerNameText.text = activePlayer.gameObject.name;
         playerHealthSlider.maxValue = activePlayer.maxHealth;
         playerHealthSlider.value = activePlayer.currentHealth;
 
-        GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
-        if (ctrl != null && activeEnemy != null)
-            ctrl.currentOpponentHealth = activeEnemy;
+        // Link player -> enemy hit points
+        if (activeEnemy != null)
+            LinkHitPoints(activePlayer, activeEnemy);
     }
 
     void SetActiveEnemy(int index)
@@ -136,17 +134,19 @@ public class BattleManager : MonoBehaviour
         enemyIndex = index;
 
         activeEnemy.transform.position = enemyRingSpawn.position;
-
-        // Enable this enemy's controller and AI
         EnableCharacter(activeEnemy.gameObject, isEnemy: true);
 
         enemyNameText.text = activeEnemy.gameObject.name;
         enemyHealthSlider.maxValue = activeEnemy.maxHealth;
         enemyHealthSlider.value = activeEnemy.currentHealth;
 
-        GuyPearceAbilityController ctrl = activeEnemy.GetComponent<GuyPearceAbilityController>();
-        if (ctrl != null)
-            ctrl.currentOpponentHealth = activePlayer;
+        // Link enemy -> player hit points
+        if (activePlayer != null)
+            LinkHitPoints(activeEnemy, activePlayer);
+
+        // Link player -> new enemy hit points
+        if (activePlayer != null)
+            LinkHitPoints(activePlayer, activeEnemy);
 
         EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
         if (ai != null)
@@ -162,7 +162,6 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        // Disable and bench the current active player
         CharacterHealth oldPlayer = activePlayer;
         int oldIndex = playerIndex;
 
@@ -173,17 +172,20 @@ public class BattleManager : MonoBehaviour
             oldPlayer.transform.position = bench.position;
         }
 
-        // Bring new player into ring
         SetActivePlayer(index);
 
-        // Update enemy targets
+        // Re-link hit points both ways after swap
         if (activeEnemy != null)
         {
+            LinkHitPoints(activePlayer, activeEnemy);
+            LinkHitPoints(activeEnemy, activePlayer);
+
             EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
             if (ai != null) ai.SetTarget(activePlayer);
 
             GuyPearceAbilityController enemyCtrl = activeEnemy.GetComponent<GuyPearceAbilityController>();
-            if (enemyCtrl != null) enemyCtrl.currentOpponentHealth = activePlayer;
+            if (enemyCtrl != null)
+                enemyCtrl.currentOpponentHealth = activePlayer;
         }
 
         RefreshSwapButtons();
@@ -237,6 +239,37 @@ public class BattleManager : MonoBehaviour
             enemyHealthSlider.value = character.currentHealth;
     }
 
+
+    // Add this helper method to BattleManager
+    void LinkHitPoints(CharacterHealth attacker, CharacterHealth defender)
+    {
+        if (attacker == null || defender == null) return;
+
+        GuyPearceAbilityController ctrl = attacker.GetComponent<GuyPearceAbilityController>();
+        if (ctrl == null) return;
+
+        // Try multiple possible names in case prefabs are named differently
+        Transform head = defender.transform.Find("HitPoint_Head")
+                      ?? defender.transform.Find("HitPoint_head")
+                      ?? defender.transform.Find("Head_HitPoint")
+                      ?? defender.transform.Find("HitPointHead");
+
+        Transform body = defender.transform.Find("HitPoint_Body")
+                      ?? defender.transform.Find("HitPoint_body")
+                      ?? defender.transform.Find("Body_HitPoint")
+                      ?? defender.transform.Find("HitPointBody");
+
+        if (head != null) ctrl.opponentHead = head;
+        else Debug.LogWarning("HitPoint_Head not found on " + defender.gameObject.name + " — using root");
+
+        if (body != null) ctrl.opponentBody = body;
+        else Debug.LogWarning("HitPoint_Body not found on " + defender.gameObject.name + " — using root");
+
+        Animator defenderAnimator = defender.GetComponent<Animator>();
+        if (defenderAnimator != null)
+            ctrl.opponentAnimator = defenderAnimator;
+    }
+
     public void OnCharacterDied(CharacterHealth character)
     {
         if (character == activePlayer)
@@ -255,11 +288,12 @@ public class BattleManager : MonoBehaviour
             playerIndex = nextIndex;
             SetActivePlayer(nextIndex);
 
-            GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
-            if (ctrl != null) ctrl.currentOpponentHealth = activeEnemy;
-
+            // Re-link both ways
             if (activeEnemy != null)
             {
+                LinkHitPoints(activePlayer, activeEnemy);
+                LinkHitPoints(activeEnemy, activePlayer);
+
                 EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
                 if (ai != null) ai.SetTarget(activePlayer);
 
@@ -284,14 +318,14 @@ public class BattleManager : MonoBehaviour
 
             SetActiveEnemy(enemyIndex);
 
+            // Re-link both ways
             if (activePlayer != null)
             {
-                GuyPearceAbilityController ctrl = activePlayer.GetComponent<GuyPearceAbilityController>();
-                if (ctrl != null) ctrl.currentOpponentHealth = activeEnemy;
+                LinkHitPoints(activePlayer, activeEnemy);
+                LinkHitPoints(activeEnemy, activePlayer);
             }
         }
     }
-
     int FindNextAlivePlayer()
     {
         for (int i = 0; i < playerTeam.Count; i++)

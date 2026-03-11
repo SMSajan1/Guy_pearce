@@ -136,34 +136,46 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         yield return new WaitForSeconds(hitDelay);
 
-        // Always deal damage directly via BattleManager — no broken references
         if (isPlayer)
             BattleManager.Instance.DamageActiveEnemy(damage);
         else
             BattleManager.Instance.DamageActivePlayer(damage);
 
-        if (hitFx && hitPoint != null)
+        if (hitFx != null)
         {
+            // If hitPoint is null fall back to opponent's root position
+            Vector3 hitWorldPos = hitPoint != null
+                ? hitPoint.TransformPoint(hitOffset)
+                : (opponentAnimator != null ? opponentAnimator.transform.position : transform.position);
+
             if (projectile)
             {
                 Vector3 spawnPos = transform.TransformPoint(castOffset);
-                Vector3 targetPos = hitPoint.TransformPoint(hitOffset);
-
-                Quaternion spawnRot = Quaternion.LookRotation((targetPos - spawnPos).normalized);
+                Quaternion spawnRot = Quaternion.LookRotation((hitWorldPos - spawnPos).normalized);
                 GameObject proj = Instantiate(hitFx, spawnPos, spawnRot);
 
-                StartCoroutine(MoveProjectile(proj, targetPos, () =>
+                StartCoroutine(MoveProjectile(proj, hitWorldPos, () =>
                 {
-                    if (opponentAnimator)
+                    if (opponentAnimator == null)
+                        Debug.LogError(gameObject.name + ": opponentAnimator is NULL (projectile hit)");
+                    else
+                    {
+                        Debug.Log(gameObject.name + ": Triggering " + opponentHitTrigger + " on " + opponentAnimator.gameObject.name);
                         opponentAnimator.SetTrigger(opponentHitTrigger);
+                    }
                 }));
             }
             else
             {
-                if (opponentAnimator)
+                if (opponentAnimator == null)
+                    Debug.LogError(gameObject.name + ": opponentAnimator is NULL (direct hit)");
+                else
+                {
+                    Debug.Log(gameObject.name + ": Triggering " + opponentHitTrigger + " on " + opponentAnimator.gameObject.name);
                     opponentAnimator.SetTrigger(opponentHitTrigger);
+                }
 
-                Instantiate(hitFx, hitPoint.TransformPoint(hitOffset), hitPoint.rotation);
+                Instantiate(hitFx, hitWorldPos, hitPoint != null ? hitPoint.rotation : Quaternion.identity);
             }
         }
 
