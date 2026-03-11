@@ -23,14 +23,9 @@ public class ShieldController : MonoBehaviour
     {
         abilityController = GetComponent<GuyPearceAbilityController>();
 
-        // Spawn the shield instance, attach it to this character, hide it
+        // Shield is already a child of the character — just hide it
         if (shieldPrefab != null)
-        {
-            spawnedShield = Instantiate(shieldPrefab, transform.position + shieldOffset, transform.rotation);
-            spawnedShield.transform.SetParent(transform); // attach to character
-            spawnedShield.transform.localPosition = shieldOffset;
-            spawnedShield.SetActive(false); // hide until activated
-        }
+            shieldPrefab.SetActive(false);
     }
 
     void Update()
@@ -46,22 +41,18 @@ public class ShieldController : MonoBehaviour
         isShielded = true;
         onCooldown = true;
 
-        // Show shield
-        if (spawnedShield != null)
-            spawnedShield.SetActive(true);
+        if (shieldPrefab != null)
+            shieldPrefab.SetActive(true);
 
-        // Notify ShieldUI
         if (ShieldUI.Instance != null)
             ShieldUI.Instance.OnShieldActivated(shieldDuration, shieldCooldown);
 
         yield return new WaitForSeconds(shieldDuration);
 
-        // Hide shield
         isShielded = false;
-        if (spawnedShield != null)
-            spawnedShield.SetActive(false);
+        if (shieldPrefab != null)
+            shieldPrefab.SetActive(false);
 
-        // Wait cooldown
         yield return new WaitForSeconds(shieldCooldown);
         onCooldown = false;
     }
