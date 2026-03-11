@@ -1036,7 +1036,7 @@ MonoBehaviour:
   characterType: 5
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 362953341}
-  characterSprite: {fileID: 21300000, guid: e5b99319f498c8849b996c737c942475, type: 3}
+  characterSprite: {fileID: 21300000, guid: 8f6f1b9710f6f3e448d01c0673d4e838, type: 3}
 --- !u!1 &418802150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   characterType: 3
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 463498763}
-  characterSprite: {fileID: 21300000, guid: 8cb4a1a8579160244a2515552dc12278, type: 3}
+  characterSprite: {fileID: 21300000, guid: ca8cddccdb7b8c14c80d1aed44bf7768, type: 3}
 --- !u!1 &473529786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,7 +1447,7 @@ MonoBehaviour:
   characterType: 1
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 473529786}
-  characterSprite: {fileID: 21300000, guid: 7b4548d4f13727747a96dd5524e82709, type: 3}
+  characterSprite: {fileID: 21300000, guid: 63eafdcd45531f540a4f3e981adf2e06, type: 3}
 --- !u!1 &534105694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +2553,7 @@ MonoBehaviour:
   characterType: 2
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 904336581}
-  characterSprite: {fileID: 21300000, guid: 02c52ee039908cf4b9337ea1edea66f0, type: 3}
+  characterSprite: {fileID: 21300000, guid: 1b981f4809b7e9644968f784fc65ff0d, type: 3}
 --- !u!1 &952217456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,7 +2853,7 @@ MonoBehaviour:
   characterType: 6
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 1071312209}
-  characterSprite: {fileID: 21300000, guid: 7e0a90ba132df2d4591e576b87f65441, type: 3}
+  characterSprite: {fileID: 21300000, guid: e40800ebf560bf6479bdaf648aed23e0, type: 3}
 --- !u!1 &1076610190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,7 +4731,7 @@ MonoBehaviour:
   characterType: 4
   previewUI: {fileID: 101476203}
   selectedHighlight: {fileID: 1882107852}
-  characterSprite: {fileID: 21300000, guid: 66b89be3629e9aa42bd218c981f05fc0, type: 3}
+  characterSprite: {fileID: 21300000, guid: ecd9f03c206bf3f41ae63b3b20c11950, type: 3}
 --- !u!1 &1888384608
 GameObject:
   m_ObjectHideFlags: 0
