@@ -9,6 +9,9 @@ public class CharacterUIButton : MonoBehaviour
     [Header("Selection Highlight")]
     public GameObject selectedHighlight;
 
+    [Header("Character Sprite for this button")]
+    public Sprite characterSprite; // Assign in Inspector
+
     private Button button;
 
     void Awake()
@@ -19,17 +22,14 @@ public class CharacterUIButton : MonoBehaviour
 
     void OnClick()
     {
-        // Always show this character in the main large preview
         previewUI.ShowMainPreview(characterType);
 
-        // Select or deselect
-        bool isNowSelected = GameManager.Instance.SelectCharacter(characterType);
+        // Pass sprite along with character type
+        bool isNowSelected = GameManager.Instance.SelectCharacter(characterType, characterSprite);
 
-        // Update highlight
         if (selectedHighlight != null)
             selectedHighlight.SetActive(isNowSelected);
 
-        // Refresh the 3 slot images
         previewUI.RefreshPreviews();
     }
 }

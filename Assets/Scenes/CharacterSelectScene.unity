@@ -1035,7 +1035,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 5
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 362953341}
+  characterSprite: {fileID: 21300000, guid: e5b99319f498c8849b996c737c942475, type: 3}
 --- !u!1 &418802150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 3
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 463498763}
+  characterSprite: {fileID: 21300000, guid: 8cb4a1a8579160244a2515552dc12278, type: 3}
 --- !u!1 &473529786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1446,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 1
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 473529786}
+  characterSprite: {fileID: 21300000, guid: 7b4548d4f13727747a96dd5524e82709, type: 3}
 --- !u!1 &534105694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacters: 
+  selectedSprites: []
 --- !u!1 &889732175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,7 +2552,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 2
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 904336581}
+  characterSprite: {fileID: 21300000, guid: 02c52ee039908cf4b9337ea1edea66f0, type: 3}
 --- !u!1 &952217456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +2852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 6
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 1071312209}
+  characterSprite: {fileID: 21300000, guid: 7e0a90ba132df2d4591e576b87f65441, type: 3}
 --- !u!1 &1076610190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,7 +4730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 4
   previewUI: {fileID: 101476203}
-  selectedHighlight: {fileID: 0}
+  selectedHighlight: {fileID: 1882107852}
+  characterSprite: {fileID: 21300000, guid: 66b89be3629e9aa42bd218c981f05fc0, type: 3}
 --- !u!1 &1888384608
 GameObject:
   m_ObjectHideFlags: 0

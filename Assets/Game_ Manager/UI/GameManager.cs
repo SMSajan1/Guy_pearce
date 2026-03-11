@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public List<CharacterType> selectedCharacters = new List<CharacterType>();
+    public List<Sprite> selectedSprites = new List<Sprite>(); // NEW
     public const int MaxTeamSize = 3;
 
     private void Awake()
@@ -15,20 +16,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public bool SelectCharacter(CharacterType type)
+    public bool SelectCharacter(CharacterType type, Sprite sprite = null)
     {
-        // Deselect if already selected
         if (selectedCharacters.Contains(type))
         {
-            selectedCharacters.Remove(type);
-            return false; // returns false = deselected
+            int index = selectedCharacters.IndexOf(type);
+            selectedCharacters.RemoveAt(index);
+            selectedSprites.RemoveAt(index);
+            return false;
         }
 
-        // Don't allow more than 3
         if (selectedCharacters.Count >= MaxTeamSize) return false;
 
         selectedCharacters.Add(type);
-        return true; // returns true = selected
+        selectedSprites.Add(sprite); // NEW
+        return true;
     }
 
     public bool IsSelected(CharacterType type) => selectedCharacters.Contains(type);

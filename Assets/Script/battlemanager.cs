@@ -184,14 +184,13 @@ public class BattleManager : MonoBehaviour
         {
             if (buttons[i] == null) continue;
 
-            Button btn = buttons[i].GetComponent<Button>();
-            if (btn == null) continue;
+            SwapButton swapBtn = buttons[i].GetComponent<SwapButton>();
+            if (swapBtn == null) continue;
 
             bool isDead = playerTeam[i] == null || playerTeam[i].IsDead();
             bool isActive = (i == playerIndex);
 
-            // Disable button if dead or already active
-            btn.interactable = !isDead && !isActive;
+            swapBtn.SetState(isActive, isDead);
         }
     }
 
