@@ -52,6 +52,9 @@ public class GuyPearceAbilityController : MonoBehaviour
         if (!isPlayer) return;
         if (isBusy) return;
 
+        // Block player input if it's not their turn
+        if (!TurnManager.Instance.IsPlayerTurn()) return;
+
         if (Input.GetKeyDown(KeyCode.Q) && EffortBar.Instance.TryUseAbility("Q")) TriggerAbility("Q");
         if (Input.GetKeyDown(KeyCode.E) && EffortBar.Instance.TryUseAbility("E")) TriggerAbility("E");
         if (Input.GetKeyDown(KeyCode.A) && EffortBar.Instance.TryUseAbility("A")) TriggerAbility("A");
@@ -181,6 +184,14 @@ public class GuyPearceAbilityController : MonoBehaviour
 
         yield return new WaitForSeconds(animationLockTime);
         isBusy = false;
+
+        // Signal turn switch after ability finishes
+        if (isPlayer)
+            TurnManager.Instance.SetEnemyTurn();
+        else
+            TurnManager.Instance.SetPlayerTurn();
+
+
     }
 
     IEnumerator MoveProjectile(GameObject fx, Vector3 target, System.Action onImpact = null)

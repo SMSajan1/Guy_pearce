@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private GuyPearceAbilityController abilityController;
     private CharacterHealth targetHealth;
     private string[] abilityKeys = { "Q", "E", "A", "D", "R" };
+    private Coroutine attackCoroutine;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         if (abilityController != null)
             abilityController.isPlayer = false;
 
-        StartCoroutine(AutoAttackLoop());
+        // Do NOT auto start — BattleManager will call StartAttacking()
     }
 
     public void SetTarget(CharacterHealth target)
@@ -27,20 +28,46 @@ public class EnemyAI : MonoBehaviour
             abilityController.currentOpponentHealth = target;
     }
 
+    // Called by BattleManager when this enemy enters the ring
+    public void StartAttacking()
+    {
+        if (attackCoroutine != null)
+            StopCoroutine(attackCoroutine);
+        attackCoroutine = StartCoroutine(AutoAttackLoop());
+    }
+
+    // Called by BattleManager when this enemy leaves the ring
+    public void StopAttacking()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+        }
+    }
+
     IEnumerator AutoAttackLoop()
     {
         yield return new WaitForSeconds(2f);
 
         while (true)
         {
+            // Wait until it's the enemy's turn
+            yield return new WaitUntil(() => TurnManager.Instance.IsEnemyTurn());
+
+            // Small natural delay before attacking
             float waitTime = Random.Range(minAttackInterval, maxAttackInterval);
             yield return new WaitForSeconds(waitTime);
 
-            if (abilityController != null && targetHealth != null)
+            // Double check it's still enemy turn and target is valid
+            if (TurnManager.Instance.IsEnemyTurn() && abilityController != null && targetHealth != null)
             {
                 string randomKey = abilityKeys[Random.Range(0, abilityKeys.Length)];
                 abilityController.TriggerAbility(randomKey);
             }
+
+            // Wait until ability finishes and turn returns to player
+            yield return new WaitUntil(() => TurnManager.Instance.IsPlayerTurn());
         }
     }
 }

@@ -81,6 +81,7 @@ public class BattleManager : MonoBehaviour
     }
 
     // Disables ability controller and AI on a character
+    // Add to DisableCharacter method
     void DisableCharacter(GameObject go, bool isEnemy)
     {
         GuyPearceAbilityController ctrl = go.GetComponent<GuyPearceAbilityController>();
@@ -89,7 +90,11 @@ public class BattleManager : MonoBehaviour
         if (isEnemy)
         {
             EnemyAI ai = go.GetComponent<EnemyAI>();
-            if (ai != null) ai.enabled = false;
+            if (ai != null)
+            {
+                ai.StopAttacking(); // stop the loop when disabled
+                ai.enabled = false;
+            }
         }
     }
 
@@ -140,17 +145,19 @@ public class BattleManager : MonoBehaviour
         enemyHealthSlider.maxValue = activeEnemy.maxHealth;
         enemyHealthSlider.value = activeEnemy.currentHealth;
 
-        // Link enemy -> player hit points
         if (activePlayer != null)
             LinkHitPoints(activeEnemy, activePlayer);
 
-        // Link player -> new enemy hit points
         if (activePlayer != null)
             LinkHitPoints(activePlayer, activeEnemy);
 
+        // Only start attacking on the active enemy
         EnemyAI ai = activeEnemy.GetComponent<EnemyAI>();
         if (ai != null)
+        {
             ai.SetTarget(activePlayer);
+            ai.StartAttacking(); // explicitly start only this one
+        }
     }
 
     public void SwapToPlayer(int index)
@@ -332,4 +339,8 @@ public class BattleManager : MonoBehaviour
             if (playerTeam[i] != null && !playerTeam[i].IsDead()) return i;
         return -1;
     }
+
+
+
+
 }
