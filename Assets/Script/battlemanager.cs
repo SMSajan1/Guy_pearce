@@ -38,11 +38,26 @@ public class BattleManager : MonoBehaviour
     private int playerIndex = 0;
     private int enemyIndex = 0;
 
+
+    [Header("KO UI")]
+    public GameObject koImage; // Assign your KO image in Inspector
+
     private Transform[] benchSpawns;
 
     void Awake()
     {
         Instance = this;
+    }
+
+
+    IEnumerator ShowKO()
+    {
+        if (koImage != null)
+        {
+            koImage.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            koImage.SetActive(false);
+        }
     }
 
     public void InitTeams(List<CharacterHealth> players, List<CharacterHealth> enemies)
@@ -299,11 +314,12 @@ public class BattleManager : MonoBehaviour
         if (defenderAnimator != null)
             ctrl.opponentAnimator = defenderAnimator;
     }
-
     public void OnCharacterDied(CharacterHealth character)
     {
         if (character == activePlayer)
         {
+            StartCoroutine(ShowKO()); // KO flash
+
             Destroy(activePlayer.gameObject);
             playerTeam[playerIndex] = null;
             activePlayer = null;
@@ -318,7 +334,6 @@ public class BattleManager : MonoBehaviour
             playerIndex = nextIndex;
             SetActivePlayer(nextIndex);
 
-            // Re-link both ways
             if (activeEnemy != null)
             {
                 LinkHitPoints(activePlayer, activeEnemy);
@@ -335,6 +350,8 @@ public class BattleManager : MonoBehaviour
         }
         else if (character == activeEnemy)
         {
+            StartCoroutine(ShowKO()); // KO flash
+
             Destroy(activeEnemy.gameObject);
             enemyTeam[enemyIndex] = null;
             activeEnemy = null;
@@ -348,7 +365,6 @@ public class BattleManager : MonoBehaviour
 
             SetActiveEnemy(enemyIndex);
 
-            // Re-link both ways
             if (activePlayer != null)
             {
                 LinkHitPoints(activePlayer, activeEnemy);
