@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
@@ -235,7 +236,29 @@ public class BattleManager : MonoBehaviour
     public void DamageActivePlayer(float amount)
     {
         if (activePlayer != null)
+        {
             activePlayer.TakeDamage(amount);
+
+            if (CameraShake.Instance != null)
+                StartCoroutine(DelayedShake(amount));
+        }
+    }
+
+    IEnumerator DelayedShake(float amount)
+    {
+        // Delay to sync with animation/projectile reaching player
+        yield return new WaitForSeconds(0.35f);
+
+        if (amount >= 25f)
+            CameraShake.Instance.Shake(0.6f, 5f, 3f);
+        else if (amount >= 15f)
+            CameraShake.Instance.Shake(0.45f, 3.5f, 2.5f);
+        else if (amount >= 10f)
+            CameraShake.Instance.Shake(0.3f, 2.5f, 2f);
+        else if (amount >= 5f)
+            CameraShake.Instance.Shake(0.2f, 1.5f, 1.5f);
+        else
+            CameraShake.Instance.Shake(0.15f, 1f, 1f);
     }
 
     public void OnCharacterDamaged(CharacterHealth character)
