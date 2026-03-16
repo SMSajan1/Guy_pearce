@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 4a3ee6cef86d24530a6eb3783d762ac3, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d281b3e13cb08414dbf192a3e9655532, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 9ac3730b413d7304192bf1c15efe340b, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 38c975d88dcde05459f67410c55ab72e, type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -488,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Name
       value: Idle Transition
@@ -569,7 +569,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Name
       value: Clapping (1)
@@ -645,7 +645,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man
@@ -849,7 +849,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Name
       value: Cheering While Sitting
@@ -1388,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Name
       value: Cheering While Sitting (3)
@@ -1592,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ffdfad02e06a0354988a632082839637, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Name
       value: Idle Transition (2)
@@ -1855,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Name
       value: Talking_Man (2)
@@ -1936,7 +1936,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: c07d15d69fc8fd742b60efd6ca4341ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: c07d15d69fc8fd742b60efd6ca4341ec, type: 3}
       propertyPath: m_Name
       value: Fist Pump
@@ -2416,7 +2416,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man (1)
@@ -2537,7 +2537,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Name
       value: Talking_Man (1)
@@ -3266,7 +3266,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man (5)
@@ -3656,7 +3656,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Name
       value: Sitting Talking (1)
@@ -3812,7 +3812,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man (4)
@@ -4227,7 +4227,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 41c1975c80f241d48be1ca8fce4ba0a7, type: 3}
       propertyPath: m_Name
       value: Talking_Man
@@ -4876,7 +4876,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Name
       value: Cheering While Sitting (1)
@@ -5014,7 +5014,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Name
       value: Clapping (3)
@@ -5734,7 +5734,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 769edf5922d6c0f40a8c628ce9209970, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ffdfad02e06a0354988a632082839637, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 769edf5922d6c0f40a8c628ce9209970, type: 3}
       propertyPath: m_Name
       value: Focus (1)
@@ -5815,7 +5815,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 769edf5922d6c0f40a8c628ce9209970, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ffdfad02e06a0354988a632082839637, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 769edf5922d6c0f40a8c628ce9209970, type: 3}
       propertyPath: m_Name
       value: Focus
@@ -5927,7 +5927,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man (2)
@@ -6111,7 +6111,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 868e994267dfe7a40a746fec605e6025, type: 3}
       propertyPath: m_Name
       value: SittingClap Man (3)
@@ -6323,7 +6323,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: c07d15d69fc8fd742b60efd6ca4341ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: c07d15d69fc8fd742b60efd6ca4341ec, type: 3}
       propertyPath: m_Name
       value: Fist Pump (1)
@@ -6932,7 +6932,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ffdfad02e06a0354988a632082839637, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 55a82a792812b9d4cbf77efc4cb94701, type: 3}
       propertyPath: m_Name
       value: Idle Transition (1)
@@ -7150,7 +7150,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Name
       value: Sitting Talking
@@ -7262,7 +7262,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a64b9daf800b6f4ba11a3e880ea89c6, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 9ca47f3c76010d441a8512bf54179fd9, type: 3}
       propertyPath: m_Name
       value: Sitting Talking (2)
@@ -8004,9 +8004,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      minMaxState: 0
+      scalar: 10
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -8059,7 +8059,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0.11372549}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.2784314}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -12601,8 +12601,8 @@ Transform:
   m_GameObject: {fileID: 1801701864}
   serializedVersion: 2
   m_LocalRotation: {x: -0.002174553, y: -0, z: -0, w: 0.9999977}
-  m_LocalPosition: {x: 5.08, y: -5.089493, z: 17.81843}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.08, y: 7.4, z: 17.8}
+  m_LocalScale: {x: 0.48706934, y: 0.48706934, z: 0.48706934}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2081642852}
@@ -13477,7 +13477,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b794b7f3ee23e604881b46330f4651ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: 5dbbb41ee063c0f40ad89dbd5b406276, type: 3}
       propertyPath: m_Name
       value: Cheering While Sitting (2)
@@ -14239,7 +14239,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ffdfad02e06a0354988a632082839637, type: 2}
+      objectReference: {fileID: 2100000, guid: e2f0c73324d6054479eb1268e4afc9ea, type: 2}
     - target: {fileID: 919132149155446097, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Name
       value: Clapping
@@ -14454,7 +14454,7 @@ PrefabInstance:
     - target: {fileID: 819804357455370167, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2059c2711937c0148b73d9231108c3be, type: 2}
+      objectReference: {fileID: 2100000, guid: 2c5c15df151bc8049a1396c40f23531f, type: 2}
     - target: {fileID: 919132149155446097, guid: add68555540942240870e7c6dad80483, type: 3}
       propertyPath: m_Name
       value: Clapping (2)
@@ -14843,7 +14843,7 @@ PrefabInstance:
     - target: {fileID: 1227026089845619247, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 24013d0b4b76742428e673ee2466f28f, type: 2}
+      objectReference: {fileID: 2100000, guid: d6a84ae990b98274cb9f620bde6376ee, type: 2}
     - target: {fileID: 1732962453176068348, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -14947,15 +14947,15 @@ PrefabInstance:
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 601ce84153e2ae841bea8fff4e0babc9, type: 2}
+      objectReference: {fileID: 2100000, guid: 24013d0b4b76742428e673ee2466f28f, type: 2}
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 601ce84153e2ae841bea8fff4e0babc9, type: 2}
+      objectReference: {fileID: 2100000, guid: 24013d0b4b76742428e673ee2466f28f, type: 2}
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 601ce84153e2ae841bea8fff4e0babc9, type: 2}
+      objectReference: {fileID: 2100000, guid: 4177fa365fe24494d9e14cce91d96827, type: 2}
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
@@ -14967,7 +14967,7 @@ PrefabInstance:
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[7]
       value: 
-      objectReference: {fileID: 2100000, guid: 24013d0b4b76742428e673ee2466f28f, type: 2}
+      objectReference: {fileID: 2100000, guid: 4177fa365fe24494d9e14cce91d96827, type: 2}
     - target: {fileID: 6645041255653856714, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[8]
       value: 
@@ -14975,23 +14975,23 @@ PrefabInstance:
     - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f80d7e16c8419154e8fd7a012bb84154, type: 2}
+      objectReference: {fileID: 2100000, guid: 4177fa365fe24494d9e14cce91d96827, type: 2}
     - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 6aae4f477fd16e74db6475785c4752b5, type: 2}
+      objectReference: {fileID: 2100000, guid: a7d7deef7c56fdf4995bb7154cb01bf2, type: 2}
     - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: f80d7e16c8419154e8fd7a012bb84154, type: 2}
+      objectReference: {fileID: 2100000, guid: 4177fa365fe24494d9e14cce91d96827, type: 2}
     - target: {fileID: 6960464443217840139, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 6aae4f477fd16e74db6475785c4752b5, type: 2}
+      objectReference: {fileID: 2100000, guid: 38de6b44d08a91d4485aad20f3ac314c, type: 2}
     - target: {fileID: 7323450795887845568, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 24013d0b4b76742428e673ee2466f28f, type: 2}
+      objectReference: {fileID: 2100000, guid: a7d7deef7c56fdf4995bb7154cb01bf2, type: 2}
     - target: {fileID: 8269831023258352735, guid: 6c7176f5b1bc3d145b13f536c8ae93a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

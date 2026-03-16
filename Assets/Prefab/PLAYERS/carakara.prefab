@@ -412,20 +412,20 @@ MonoBehaviour:
   opponentHead: {fileID: 0}
   opponentBody: {fileID: 0}
   Q_CastVFX: {fileID: 0}
-  E_CastVFX: {fileID: 5010331647855986242, guid: 663e5fd35ce15b54895e4d29183270be, type: 3}
-  A_CastVFX: {fileID: 8194992990867289339, guid: f885a2e6e394ba74792f46b7e965eb49, type: 3}
-  D_CastVFX: {fileID: 100000, guid: ee8b951ca9e81ad4a993204a467052f5, type: 3}
-  R_CastVFX: {fileID: 1727626132299242, guid: 6615ae32e4adf2f4f97e3a31e550c4bb, type: 3}
+  E_CastVFX: {fileID: 0}
+  A_CastVFX: {fileID: 0}
+  D_CastVFX: {fileID: 0}
+  R_CastVFX: {fileID: 0}
   Q_CastOffset: {x: 0, y: 0, z: 0}
   E_CastOffset: {x: 0, y: -4, z: 1.28}
   A_CastOffset: {x: 0, y: 0, z: 0}
   D_CastOffset: {x: 0, y: 0, z: 0}
   R_CastOffset: {x: 0, y: 0, z: 0}
   Q_HitVFX: {fileID: 8172849020266659018, guid: 4211377076e55054eb09e8592944ac48, type: 3}
-  E_HitVFX: {fileID: 0}
-  A_HitVFX: {fileID: 0}
-  D_HitVFX: {fileID: 0}
-  R_HitVFX: {fileID: 0}
+  E_HitVFX: {fileID: 5010331647855986242, guid: 663e5fd35ce15b54895e4d29183270be, type: 3}
+  A_HitVFX: {fileID: 8194992990867289339, guid: f885a2e6e394ba74792f46b7e965eb49, type: 3}
+  D_HitVFX: {fileID: 100000, guid: ee8b951ca9e81ad4a993204a467052f5, type: 3}
+  R_HitVFX: {fileID: 1727626132299242, guid: 6615ae32e4adf2f4f97e3a31e550c4bb, type: 3}
   Q_HitOffset: {x: 0, y: 0, z: 0}
   E_HitOffset: {x: 0, y: 0, z: 0}
   A_HitOffset: {x: 0, y: 0, z: 0}
