@@ -241,8 +241,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
-    - _1st_ShadeColor_Feather: 0.632
-    - _1st_ShadeColor_Step: 0.861
+    - _1st_ShadeColor_Feather: 0.161
+    - _1st_ShadeColor_Step: 0.24
     - _2nd_ShadeColor_Feather: 0.0001
     - _2nd_ShadeColor_Step: 0.025
     - _AORemapMax: 1
@@ -274,8 +274,8 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.861
-    - _BaseShade_Feather: 0.632
+    - _BaseColor_Step: 0.24
+    - _BaseShade_Feather: 0.161
     - _Base_Speed: 0
     - _Blend: 0
     - _BlendMode: 0
@@ -425,7 +425,7 @@ Material:
     - _RimLightVisible: 1
     - _RimLight_FeatherOff: 0
     - _RimLight_InsideMask: 0.0001
-    - _RimLight_Power: 0.1
+    - _RimLight_Power: 0.7
     - _Rotate_EmissiveUV: 0
     - _Rotate_MatCapUV: 0
     - _Rotate_NormalMapForMatCapUV: 0
@@ -550,7 +550,7 @@ Material:
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineMaskColor: {r: 0, g: 0, b: 0, a: 1}
     - _Outline_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimLightColor: {r: 0.38431376, g: 0.3803922, b: 0.52156866, a: 1}
     - _RimLightMaskColor: {r: 1, g: 0, b: 1, a: 1}
     - _SecondShadeMaskColor: {r: 0, g: 0, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
