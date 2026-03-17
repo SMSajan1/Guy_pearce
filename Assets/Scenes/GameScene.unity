@@ -1324,7 +1324,7 @@ MonoBehaviour:
   buttonImage: {fileID: 222554690}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  pressedColor: {r: 1, g: 1, b: 0.4, a: 1}
+  pressedColor: {r: 0.0779192, g: 0.28561887, b: 0.9716981, a: 1}
   flashDuration: 0.15
 --- !u!1 &232843454
 GameObject:
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 292448061}
   - component: {fileID: 292448060}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: PLAYER NAME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,7 +1639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 857, y: 448}
+  m_AnchoredPosition: {x: 783, y: 448}
   m_SizeDelta: {x: 309.8552, y: -0.551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292448060
@@ -2163,7 +2163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 451.76636, y: 283}
+  m_AnchoredPosition: {x: 451.76636, y: 376}
   m_SizeDelta: {x: 425.5328, y: 53.1916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &426320265
@@ -2436,7 +2436,7 @@ RectTransform:
   m_Father: {fileID: 475601882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2642,7 +2642,7 @@ MonoBehaviour:
   buttonImage: {fileID: 499654256}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  pressedColor: {r: 1, g: 1, b: 0.4, a: 1}
+  pressedColor: {r: 1, g: 0, b: 0.031297684, a: 1}
   flashDuration: 0.15
 --- !u!1 &505724182
 GameObject:
@@ -3895,7 +3895,7 @@ GameObject:
   - component: {fileID: 765001988}
   - component: {fileID: 765001987}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ENEMY NAME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6168,7 +6168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1115760207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7008,7 +7008,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1233195846}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  pressedColor: {r: 1, g: 1, b: 0.4, a: 1}
+  pressedColor: {r: 1, g: 0.99999994, b: 0, a: 1}
   flashDuration: 0.15
 --- !u!4 &1250841065 stripped
 Transform:
@@ -14712,7 +14712,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1965269813}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  pressedColor: {r: 1, g: 1, b: 0.4, a: 1}
+  pressedColor: {r: 0, g: 1, b: 0.95004964, a: 1}
   flashDuration: 0.15
 --- !u!1 &1976042706
 GameObject:
@@ -15202,7 +15202,7 @@ RectTransform:
   m_Father: {fileID: 618005037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 44.9, y: 8.3}
   m_SizeDelta: {x: 293, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15568,7 +15568,7 @@ MonoBehaviour:
   buttonImage: {fileID: 2081751301}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dimmedColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  pressedColor: {r: 1, g: 1, b: 0.4, a: 1}
+  pressedColor: {r: 0.13074599, g: 0.6226415, b: 0.0029369951, a: 1}
   flashDuration: 0.15
 --- !u!1001 &2105029555
 PrefabInstance:
@@ -15701,10 +15701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869ebab60a8007247a96bc39307e2922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthSlider: {fileID: 948408927}
-  playerNameText: {fileID: 2010850305}
-  enemyHealthSlider: {fileID: 1687517043}
-  enemyNameText: {fileID: 292448060}
+  playerHealthSlider: {fileID: 1687517043}
+  playerNameText: {fileID: 292448060}
+  enemyHealthSlider: {fileID: 505724184}
+  enemyNameText: {fileID: 765001987}
   playerRingSpawn: {fileID: 6707435120153649433}
   enemyRingSpawn: {fileID: 13616704}
   playerBenchSpawn1: {fileID: 1422809948}
