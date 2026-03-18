@@ -361,8 +361,8 @@ MonoBehaviour:
   Q_Damage: 2
   E_Damage: 5
   A_Damage: 7
-  D_Damage: 10
-  R_Damage: 15
+  D_Damage: 15
+  R_Damage: 30
   currentOpponentHealth: {fileID: 0}
 --- !u!114 &-9140968935175664169
 MonoBehaviour:
@@ -393,6 +393,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   isPlayer: 1
+  deathAnimationDuration: 2
 --- !u!114 &-6291468305006049438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +401,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5528770444975683776}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c073fdcc7d2f74aa2c31be29afb9f1, type: 3}
   m_Name: 
