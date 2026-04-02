@@ -293,26 +293,37 @@ public class BattleManager : MonoBehaviour
         GuyPearceAbilityController ctrl = attacker.GetComponent<GuyPearceAbilityController>();
         if (ctrl == null) return;
 
-        Transform head = defender.transform.Find("HitPoint_Head")
-                      ?? defender.transform.Find("HitPoint_head")
-                      ?? defender.transform.Find("Head_HitPoint")
-                      ?? defender.transform.Find("HitPointHead");
+        // Deep search through entire hierarchy
+        Transform head = FindDeep(defender.transform, "HitPoint_Head")
+                      ?? FindDeep(defender.transform, "HitPoint_head")
+                      ?? FindDeep(defender.transform, "Head_HitPoint")
+                      ?? FindDeep(defender.transform, "HitPointHead");
 
-        Transform body = defender.transform.Find("HitPoint_Body")
-                      ?? defender.transform.Find("HitPoint_body")
-                      ?? defender.transform.Find("Body_HitPoint")
-                      ?? defender.transform.Find("HitPointBody");
+        Transform body = FindDeep(defender.transform, "HitPoint_Body")
+                      ?? FindDeep(defender.transform, "HitPoint_body")
+                      ?? FindDeep(defender.transform, "Body_HitPoint")
+                      ?? FindDeep(defender.transform, "HitPointBody");
 
         if (head != null) ctrl.opponentHead = head;
+        else Debug.LogWarning("HitPoint_Head not found anywhere in " + defender.gameObject.name);
+
         if (body != null) ctrl.opponentBody = body;
+        else Debug.LogWarning("HitPoint_Body not found anywhere in " + defender.gameObject.name);
 
         Animator defenderAnimator = defender.GetComponent<Animator>();
         if (defenderAnimator != null)
             ctrl.opponentAnimator = defenderAnimator;
 
-        // Link the hit reaction names from the defender
         CharacterHitReactions reactions = defender.GetComponent<CharacterHitReactions>();
-        ctrl.opponentHitReactions = reactions; // null is fine — falls back to default names
+        ctrl.opponentHitReactions = reactions;
+    }
+
+    // Searches entire child hierarchy by name
+    Transform FindDeep(Transform parent, string name)
+    {
+        foreach (Transform child in parent.GetComponentsInChildren<Transform>(true))
+            if (child.name == name) return child;
+        return null;
     }
     public void OnCharacterDied(CharacterHealth character)
     {
