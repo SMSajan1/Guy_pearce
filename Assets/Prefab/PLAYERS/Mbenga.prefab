@@ -244,6 +244,7 @@ MonoBehaviour:
   D_Damage: 15
   R_Damage: 30
   currentOpponentHealth: {fileID: 0}
+  opponentHitReactions: {fileID: 0}
 --- !u!114 &-4826790277658598225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,11 +303,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e7e29ba429b7c4a812bb76e547ccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hit_1: Hit_1
-  Hit_2: Hit_2
-  Hit_3: Hit_3
-  Hit_4: Hit_4
-  Hit_5: Hit_5
+  Hit_1: Mbenga_hit1
+  Hit_2: Mbenga_hit2
+  Hit_3: Mbenga_hit1
+  Hit_4: Mbenga_hit2
+  Hit_5: Mbenga_hit1
 --- !u!4 &5843625906627096457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -621107441423094298, guid: ad0bf796f7d21f943845921d0c4a170a, type: 3}
