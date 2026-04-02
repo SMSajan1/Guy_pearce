@@ -320,11 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e7e29ba429b7c4a812bb76e547ccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hit_1: Pelsum_hit1
-  Hit_2: Pelsum_hit2
-  Hit_3: Pelsum_hit3
-  Hit_4: Pelsum_hit4
-  Hit_5: Pelsum_hit5
+  Hit_1: Phelsum_hit1
+  Hit_2: Phelsum_hit2
+  Hit_3: Phelsum_hit3
+  Hit_4: Phelsum_hit4
+  Hit_5: Phelsum_hit5
 --- !u!4 &5969609529289619457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2234015714534676088, guid: 1d0106452be9b684c954b586623011b6, type: 3}
