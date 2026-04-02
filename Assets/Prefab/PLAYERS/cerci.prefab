@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: -7473568733097030965}
   - component: {fileID: -4021635102266108243}
   - component: {fileID: 2813900373626890573}
+  - component: {fileID: 4305072626246861981}
   m_Layer: 0
   m_Name: cerci
   m_TagString: Untagged
@@ -1057,6 +1058,7 @@ MonoBehaviour:
   D_Damage: 15
   R_Damage: 30
   currentOpponentHealth: {fileID: 0}
+  opponentHitReactions: {fileID: 0}
 --- !u!114 &-7473568733097030965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1105,23 @@ MonoBehaviour:
   shieldCooldown: 8
   shieldPrefab: {fileID: 0}
   shieldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &4305072626246861981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581070804224448297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e7e29ba429b7c4a812bb76e547ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hit_1: Cerci_hit1
+  Hit_2: Cerci_hit2
+  Hit_3: Cerci_hit1
+  Hit_4: Cerci_hit2
+  Hit_5: Cerci_hit1
 --- !u!1 &7344620938169604758
 GameObject:
   m_ObjectHideFlags: 0

@@ -211,6 +211,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6291468305006049438}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2005402460834274811}
   m_SourcePrefab: {fileID: 100100000, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}
 --- !u!4 &1844341615165830460 stripped
 Transform:
@@ -290,6 +293,7 @@ MonoBehaviour:
   D_Damage: 15
   R_Damage: 30
   currentOpponentHealth: {fileID: 0}
+  opponentHitReactions: {fileID: 0}
 --- !u!114 &-9140968935175664169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +340,23 @@ MonoBehaviour:
   shieldCooldown: 8
   shieldPrefab: {fileID: 0}
   shieldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &2005402460834274811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528770444975683776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e7e29ba429b7c4a812bb76e547ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hit_1: Ryuude_hti1
+  Hit_2: Ryuude_hti2
+  Hit_3: Ryuude_hti1
+  Hit_4: Ryuude_hti2
+  Hit_5: Ryuude_hti1
 --- !u!4 &7985829731686129838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5861409178561632961, guid: 855eafeb843253348b2435a36a3e0fad, type: 3}

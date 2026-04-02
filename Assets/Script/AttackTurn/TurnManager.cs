@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class TurnManager : MonoBehaviour
 {
@@ -6,6 +7,11 @@ public class TurnManager : MonoBehaviour
 
     public enum Turn { Player, Enemy }
     public Turn currentTurn = Turn.Player;
+
+    [Header("Safety Timeout")]
+    public float turnTimeout = 10f; // if a turn lasts more than 10s, force switch
+
+    private Coroutine timeoutCoroutine;
 
     void Awake()
     {
@@ -19,24 +25,32 @@ public class TurnManager : MonoBehaviour
     {
         currentTurn = Turn.Player;
         Debug.Log("--- PLAYER TURN ---");
+        RestartTimeout();
     }
 
     public void SetEnemyTurn()
     {
         currentTurn = Turn.Enemy;
         Debug.Log("--- ENEMY TURN ---");
+        RestartTimeout();
     }
 
-    //public void SetPlayerTurn()
-    //{
-    //    currentTurn = Turn.Player;
-    //    Debug.Log("--- PLAYER TURN SET --- from: " + new System.Diagnostics.StackTrace().ToString());
-    //}
+    void RestartTimeout()
+    {
+        if (timeoutCoroutine != null)
+            StopCoroutine(timeoutCoroutine);
+        timeoutCoroutine = StartCoroutine(TurnTimeoutRoutine());
+    }
 
-    //public void SetEnemyTurn()
-    //{
-    //    currentTurn = Turn.Enemy;
-    //    Debug.Log("--- ENEMY TURN SET --- from: " + new System.Diagnostics.StackTrace().ToString());
-    //}
+    IEnumerator TurnTimeoutRoutine()
+    {
+        yield return new WaitForSeconds(turnTimeout);
 
+        // If we get here the turn was never switched — force it
+        Debug.LogWarning("Turn timeout! Force switching from: " + currentTurn);
+        if (currentTurn == Turn.Enemy)
+            SetPlayerTurn();
+        else
+            SetEnemyTurn();
+    }
 }

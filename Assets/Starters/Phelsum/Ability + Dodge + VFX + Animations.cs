@@ -45,6 +45,10 @@ public class GuyPearceAbilityController : MonoBehaviour
 
     [HideInInspector] public CharacterHealth currentOpponentHealth;
 
+
+    [HideInInspector] public CharacterHitReactions opponentHitReactions;
+
+
     private bool isBusy;
 
     void Update()
@@ -127,26 +131,39 @@ public class GuyPearceAbilityController : MonoBehaviour
     }
 
     IEnumerator Ability(string anim, GameObject castFx, Vector3 castOffset,
-        GameObject hitFx, Vector3 hitOffset, Transform hitPoint,
-        string opponentHitTrigger, bool projectile, float damage)
+    GameObject hitFx, Vector3 hitOffset, Transform hitPoint,
+    string opponentHitTrigger, bool projectile, float damage)
     {
         isBusy = true;
+
+        // Safety check — if animator is missing skip entirely
+        if (animator == null)
+        {
+            isBusy = false;
+            if (isPlayer) TurnManager.Instance.SetEnemyTurn();
+            else TurnManager.Instance.SetPlayerTurn();
+            yield break;
+        }
 
         animator.SetTrigger(anim);
 
         if (castFx)
-            Instantiate(castFx, transform.TransformPoint(castOffset), transform.rotation);
+        {
+            GameObject cast = Instantiate(castFx, transform.TransformPoint(castOffset), transform.rotation);
+            Destroy(cast, 3f);
+        }
 
         yield return new WaitForSeconds(hitDelay);
 
+        // Deal damage
         if (isPlayer)
             BattleManager.Instance.DamageActiveEnemy(damage);
         else
             BattleManager.Instance.DamageActivePlayer(damage);
 
+        // Hit VFX and opponent reaction
         if (hitFx != null)
         {
-            // If hitPoint is null fall back to opponent's root position
             Vector3 hitWorldPos = hitPoint != null
                 ? hitPoint.TransformPoint(hitOffset)
                 : (opponentAnimator != null ? opponentAnimator.transform.position : transform.position);
@@ -154,59 +171,90 @@ public class GuyPearceAbilityController : MonoBehaviour
             if (projectile)
             {
                 Vector3 spawnPos = transform.TransformPoint(castOffset);
-                Quaternion spawnRot = Quaternion.LookRotation((hitWorldPos - spawnPos).normalized);
+                Vector3 direction = (hitWorldPos - spawnPos).normalized;
+
+                // Guard against zero direction
+                if (direction == Vector3.zero) direction = transform.forward;
+
+                Quaternion spawnRot = Quaternion.LookRotation(direction);
                 GameObject proj = Instantiate(hitFx, spawnPos, spawnRot);
 
                 StartCoroutine(MoveProjectile(proj, hitWorldPos, () =>
                 {
-                    if (opponentAnimator == null)
-                        Debug.LogError(gameObject.name + ": opponentAnimator is NULL (projectile hit)");
-                    else
+                    if (opponentAnimator != null)
                     {
-                        Debug.Log(gameObject.name + ": Triggering " + opponentHitTrigger + " on " + opponentAnimator.gameObject.name);
-                        opponentAnimator.SetTrigger(opponentHitTrigger);
+                        string trigger = opponentHitReactions != null
+                            ? opponentHitReactions.GetTrigger(opponentHitTrigger)
+                            : opponentHitTrigger;
+
+                        if (HasAnimatorParameter(opponentAnimator, trigger))
+                            opponentAnimator.SetTrigger(trigger);
                     }
                 }));
             }
             else
             {
-                if (opponentAnimator == null)
-                    Debug.LogError(gameObject.name + ": opponentAnimator is NULL (direct hit)");
-                else
+                if (opponentAnimator != null)
                 {
-                    Debug.Log(gameObject.name + ": Triggering " + opponentHitTrigger + " on " + opponentAnimator.gameObject.name);
-                    opponentAnimator.SetTrigger(opponentHitTrigger);
+                    string trigger = opponentHitReactions != null
+                        ? opponentHitReactions.GetTrigger(opponentHitTrigger)
+                        : opponentHitTrigger;
+
+                    if (HasAnimatorParameter(opponentAnimator, trigger))
+                        opponentAnimator.SetTrigger(trigger);
                 }
 
-                Instantiate(hitFx, hitWorldPos, hitPoint != null ? hitPoint.rotation : Quaternion.identity);
+                GameObject hit = Instantiate(hitFx, hitPoint != null
+                    ? hitPoint.TransformPoint(hitOffset)
+                    : transform.position,
+                    hitPoint != null ? hitPoint.rotation : Quaternion.identity);
+                Destroy(hit, 3f);
             }
         }
 
         yield return new WaitForSeconds(animationLockTime);
+
         isBusy = false;
 
-        // Signal turn switch after ability finishes
-        if (isPlayer)
-            TurnManager.Instance.SetEnemyTurn();
-        else
-            TurnManager.Instance.SetPlayerTurn();
+        // THIS MUST ALWAYS RUN — wrapped in try/catch so nothing can stop it
+        try
+        {
+            if (isPlayer)
+                TurnManager.Instance.SetEnemyTurn();
+            else
+                TurnManager.Instance.SetPlayerTurn();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Turn switch failed: " + e.Message);
+        }
+    }
 
 
+    bool HasAnimatorParameter(Animator anim, string paramName)
+    {
+        if (anim == null) return false;
+        foreach (AnimatorControllerParameter param in anim.parameters)
+            if (param.name == paramName) return true;
+        return false;
     }
 
     IEnumerator MoveProjectile(GameObject fx, Vector3 target, System.Action onImpact = null)
-    {
-        if (fx == null) yield break;
-
-        while (fx && Vector3.Distance(fx.transform.position, target) > 0.1f)
         {
-            fx.transform.position = Vector3.MoveTowards(
-                fx.transform.position, target, projectileSpeed * Time.deltaTime);
-            yield return null;
+            if (fx == null) yield break;
+
+            while (fx && Vector3.Distance(fx.transform.position, target) > 0.1f)
+            {
+                fx.transform.position = Vector3.MoveTowards(
+                    fx.transform.position, target, projectileSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            onImpact?.Invoke();
+
+            if (fx) Destroy(fx, 2f);
         }
 
-        onImpact?.Invoke();
 
-        if (fx) Destroy(fx, 2f);
-    }
+    
 }

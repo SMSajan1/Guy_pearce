@@ -293,7 +293,6 @@ public class BattleManager : MonoBehaviour
         GuyPearceAbilityController ctrl = attacker.GetComponent<GuyPearceAbilityController>();
         if (ctrl == null) return;
 
-        // Try multiple possible names in case prefabs are named differently
         Transform head = defender.transform.Find("HitPoint_Head")
                       ?? defender.transform.Find("HitPoint_head")
                       ?? defender.transform.Find("Head_HitPoint")
@@ -305,14 +304,15 @@ public class BattleManager : MonoBehaviour
                       ?? defender.transform.Find("HitPointBody");
 
         if (head != null) ctrl.opponentHead = head;
-        else Debug.LogWarning("HitPoint_Head not found on " + defender.gameObject.name + " — using root");
-
         if (body != null) ctrl.opponentBody = body;
-        else Debug.LogWarning("HitPoint_Body not found on " + defender.gameObject.name + " — using root");
 
         Animator defenderAnimator = defender.GetComponent<Animator>();
         if (defenderAnimator != null)
             ctrl.opponentAnimator = defenderAnimator;
+
+        // Link the hit reaction names from the defender
+        CharacterHitReactions reactions = defender.GetComponent<CharacterHitReactions>();
+        ctrl.opponentHitReactions = reactions; // null is fine — falls back to default names
     }
     public void OnCharacterDied(CharacterHealth character)
     {
@@ -378,6 +378,7 @@ public class BattleManager : MonoBehaviour
             if (playerTeam[i] != null && !playerTeam[i].IsDead()) return i;
         return -1;
     }
+
 
 
 

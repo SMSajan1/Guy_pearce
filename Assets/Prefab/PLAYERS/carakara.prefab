@@ -167,6 +167,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4264133532268613566}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4910008882686004506}
   m_SourcePrefab: {fileID: 100100000, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
 --- !u!1 &2355312666500287187 stripped
 GameObject:
@@ -241,6 +244,7 @@ MonoBehaviour:
   D_Damage: 15
   R_Damage: 30
   currentOpponentHealth: {fileID: 0}
+  opponentHitReactions: {fileID: 0}
 --- !u!114 &-2261737224357698117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +291,23 @@ MonoBehaviour:
   shieldCooldown: 8
   shieldPrefab: {fileID: 0}
   shieldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-4910008882686004506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355312666500287187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e7e29ba429b7c4a812bb76e547ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hit_1: Carakara_hit1
+  Hit_2: Carakara_hit2
+  Hit_3: Carakara_hit1
+  Hit_4: Carakara_hit2
+  Hit_5: Carakara_hit1
 --- !u!4 &3706032315823923706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2234015714534676088, guid: 15c948a350f9f474b9b5aa7bbe11889c, type: 3}
