@@ -38,6 +38,10 @@ public class BattleManager : MonoBehaviour
     private int playerIndex = 0;
     private int enemyIndex = 0;
 
+    [Header("Hit Locations (Scene Objects)")]
+    public Transform playerHitLocation;  // Cube near player â€” enemy attacks land here
+    public Transform enemyHitLocation;   // Cube near enemy â€” player attacks land here
+
 
     [Header("KO UI")]
     public GameObject koImage; // Assign your KO image in Inspector
@@ -75,7 +79,7 @@ public class BattleManager : MonoBehaviour
 
     void PositionBench()
     {
-        // Bench player characters — disable their controllers
+        // Bench player characters ï¿½ disable their controllers
         for (int i = 1; i < playerTeam.Count; i++)
         {
             if (playerTeam[i] != null && !playerTeam[i].IsDead())
@@ -293,22 +297,18 @@ public class BattleManager : MonoBehaviour
         GuyPearceAbilityController ctrl = attacker.GetComponent<GuyPearceAbilityController>();
         if (ctrl == null) return;
 
-        // Deep search through entire hierarchy
-        Transform head = FindDeep(defender.transform, "HitPoint_Head")
-                      ?? FindDeep(defender.transform, "HitPoint_head")
-                      ?? FindDeep(defender.transform, "Head_HitPoint")
-                      ?? FindDeep(defender.transform, "HitPointHead");
-
-        Transform body = FindDeep(defender.transform, "HitPoint_Body")
-                      ?? FindDeep(defender.transform, "HitPoint_body")
-                      ?? FindDeep(defender.transform, "Body_HitPoint")
-                      ?? FindDeep(defender.transform, "HitPointBody");
-
-        if (head != null) ctrl.opponentHead = head;
-        else Debug.LogWarning("HitPoint_Head not found anywhere in " + defender.gameObject.name);
-
-        if (body != null) ctrl.opponentBody = body;
-        else Debug.LogWarning("HitPoint_Body not found anywhere in " + defender.gameObject.name);
+        // Player attacks land on enemy location
+        // Enemy attacks land on player location
+        if (attacker == activePlayer)
+        {
+            ctrl.opponentHead = enemyHitLocation;
+            ctrl.opponentBody = enemyHitLocation;
+        }
+        else
+        {
+            ctrl.opponentHead = playerHitLocation;
+            ctrl.opponentBody = playerHitLocation;
+        }
 
         Animator defenderAnimator = defender.GetComponent<Animator>();
         if (defenderAnimator != null)
@@ -338,7 +338,7 @@ public class BattleManager : MonoBehaviour
             int nextIndex = FindNextAlivePlayer();
             if (nextIndex == -1)
             {
-                Debug.Log("GAME OVER — Enemy Wins!");
+                Debug.Log("GAME OVER ï¿½ Enemy Wins!");
                 return;
             }
 
@@ -370,7 +370,7 @@ public class BattleManager : MonoBehaviour
             enemyIndex++;
             if (enemyIndex >= enemyTeam.Count)
             {
-                Debug.Log("GAME OVER — Player Wins!");
+                Debug.Log("GAME OVER ï¿½ Player Wins!");
                 return;
             }
 
