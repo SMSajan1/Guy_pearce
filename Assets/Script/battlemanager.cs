@@ -67,7 +67,7 @@ public class BattleManager : MonoBehaviour
     public void InitTeams(List<CharacterHealth> players, List<CharacterHealth> enemies)
     {
         playerTeam = players;
-        enemyTeam = enemies;
+        enemyTeam  = enemies;
 
         benchSpawns = new Transform[] { playerBenchSpawn1, playerBenchSpawn2 };
 
@@ -75,6 +75,13 @@ public class BattleManager : MonoBehaviour
         SetActivePlayer(0);
         SetActiveEnemy(0);
         RefreshSwapButtons();
+
+        // Update billboard with initial fighters
+        if (BillboardDisplay.Instance != null)
+            BillboardDisplay.Instance.SetFighterNames(
+                playerTeam[0].gameObject.name,
+                enemyTeam[0].gameObject.name
+            );
     }
 
     void PositionBench()
@@ -149,6 +156,12 @@ public class BattleManager : MonoBehaviour
         // Link player -> enemy hit points
         if (activeEnemy != null)
             LinkHitPoints(activePlayer, activeEnemy);
+
+        if (BillboardDisplay.Instance != null)
+            BillboardDisplay.Instance.SetFighterNames(
+                activePlayer.gameObject.name,
+                activeEnemy != null ? activeEnemy.gameObject.name : "---"
+        );
     }
 
     void SetActiveEnemy(int index)
@@ -178,6 +191,13 @@ public class BattleManager : MonoBehaviour
             ai.SetTarget(activePlayer);
             ai.StartAttacking(); // explicitly start only this one
         }
+            if (BillboardDisplay.Instance != null)
+            BillboardDisplay.Instance.SetFighterNames(
+                activePlayer != null ? activePlayer.gameObject.name : "---",
+                activeEnemy.gameObject.name
+        );
+
+
     }
 
     public void SwapToPlayer(int index)
@@ -329,6 +349,12 @@ public class BattleManager : MonoBehaviour
     {
         if (character == activePlayer)
         {
+
+            if (BillboardDisplay.Instance != null)
+                BillboardDisplay.Instance.AddEnemyKill();
+
+                
+
             StartCoroutine(ShowKO()); // KO flash
 
             Destroy(activePlayer.gameObject);
@@ -361,6 +387,11 @@ public class BattleManager : MonoBehaviour
         }
         else if (character == activeEnemy)
         {
+
+            if (BillboardDisplay.Instance != null)
+                BillboardDisplay.Instance.AddEnemyKill();
+
+
             StartCoroutine(ShowKO()); // KO flash
 
             Destroy(activeEnemy.gameObject);
