@@ -82,6 +82,8 @@ public class BattleManager : MonoBehaviour
                 playerTeam[0].gameObject.name,
                 enemyTeam[0].gameObject.name
             );
+
+            //ssss
     }
 
     void PositionBench()
