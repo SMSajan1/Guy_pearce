@@ -2983,28 +2983,33 @@ GameObject:
   m_Component:
   - component: {fileID: 402168517}
   - component: {fileID: 402168518}
+  - component: {fileID: 402168520}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &402168517
-Transform:
+--- !u!224 &402168517
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402168516}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 37.48013, y: -28.72, z: -110.74045}
+  m_LocalPosition: {x: 0, y: 0, z: -110.74}
   m_LocalScale: {x: 1.4622, y: 1.4622, z: 1.4622}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1440986803}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 35.52, y: -28.72}
+  m_SizeDelta: {x: 4.09, y: 3.02}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &402168518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3057,6 +3062,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &402168520
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402168516}
+  m_CullTransparentMesh: 1
 --- !u!1 &402480641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4342,7 +4355,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616092661}
   m_LocalRotation: {x: -0, y: 0.6802096, z: -0, w: 0.7330178}
-  m_LocalPosition: {x: 0, y: 0, z: -111.902054}
+  m_LocalPosition: {x: 0, y: 0, z: -112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4350,7 +4363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 85.72, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.745758, y: -27.124603}
+  m_AnchoredPosition: {x: 37.43, y: -27.12}
   m_SizeDelta: {x: 6.907, y: 2.5512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &618005036
@@ -6473,7 +6486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &928747705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6488,8 +6501,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 151343212}
   playerKillsText: {fileID: 268330680}
+  playerImage: {fileID: 0}
   enemyNameText: {fileID: 616092662}
   enemyKillsText: {fileID: 384373130}
+  enemyImage: {fileID: 0}
+  phelsumSprite: {fileID: 0}
+  oroboroSprite: {fileID: 0}
+  carakaraSprite: {fileID: 0}
+  cerciSprite: {fileID: 0}
+  mbengaSprite: {fileID: 0}
+  ryuudeSprite: {fileID: 0}
 --- !u!4 &928747706
 Transform:
   m_ObjectHideFlags: 0
@@ -10596,7 +10617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1687882716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10611,8 +10632,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 151343212}
   playerKillsText: {fileID: 268330680}
+  playerImage: {fileID: 0}
   enemyNameText: {fileID: 616092662}
   enemyKillsText: {fileID: 384373130}
+  enemyImage: {fileID: 0}
+  phelsumSprite: {fileID: 0}
+  oroboroSprite: {fileID: 0}
+  carakaraSprite: {fileID: 0}
+  cerciSprite: {fileID: 0}
+  mbengaSprite: {fileID: 0}
+  ryuudeSprite: {fileID: 0}
 --- !u!4 &1687882717
 Transform:
   m_ObjectHideFlags: 0
@@ -16165,6 +16194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1820520046}
   - component: {fileID: 1820520047}
+  - component: {fileID: 1820520049}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16172,21 +16202,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1820520046
-Transform:
+--- !u!224 &1820520046
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820520045}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 36.88, y: -28.72, z: -100.48}
+  m_LocalPosition: {x: 0, y: 0, z: -100.48}
   m_LocalScale: {x: 1.4622, y: 1.4622, z: 1.4622}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1440986803}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 36.54, y: -28.72}
+  m_SizeDelta: {x: 4.09, y: 3.02}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1820520047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16239,6 +16273,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &1820520049
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820520045}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1828433787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18124,8 +18166,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 151343212}
   playerKillsText: {fileID: 268330680}
+  playerImage: {fileID: 1820520047}
   enemyNameText: {fileID: 616092662}
   enemyKillsText: {fileID: 384373130}
+  enemyImage: {fileID: 402168518}
+  phelsumSprite: {fileID: 21300000, guid: 63eafdcd45531f540a4f3e981adf2e06, type: 3}
+  oroboroSprite: {fileID: 21300000, guid: 1b981f4809b7e9644968f784fc65ff0d, type: 3}
+  carakaraSprite: {fileID: 21300000, guid: ca8cddccdb7b8c14c80d1aed44bf7768, type: 3}
+  cerciSprite: {fileID: 21300000, guid: ecd9f03c206bf3f41ae63b3b20c11950, type: 3}
+  mbengaSprite: {fileID: 21300000, guid: 8f6f1b9710f6f3e448d01c0673d4e838, type: 3}
+  ryuudeSprite: {fileID: 21300000, guid: e40800ebf560bf6479bdaf648aed23e0, type: 3}
 --- !u!1001 &1194371936463232712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18578,7 +18628,7 @@ SceneRoots:
   - {fileID: 662096236}
   - {fileID: 1099133715}
   - {fileID: 1935191000}
-  - {fileID: 543450651626633289}
   - {fileID: 928747706}
   - {fileID: 1687882717}
+  - {fileID: 543450651626633289}
   - {fileID: 1440986803}

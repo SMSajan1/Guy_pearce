@@ -8,10 +8,20 @@ public class BillboardDisplay : MonoBehaviour
     [Header("Player Side")]
     public TextMeshPro playerNameText;
     public TextMeshPro playerKillsText;
+    public SpriteRenderer playerImage;
 
     [Header("Enemy Side")]
     public TextMeshPro enemyNameText;
     public TextMeshPro enemyKillsText;
+    public SpriteRenderer enemyImage;
+
+    [Header("Character Portraits")]
+    public Sprite phelsumSprite;
+    public Sprite oroboroSprite;
+    public Sprite carakaraSprite;
+    public Sprite cerciSprite;
+    public Sprite mbengaSprite;
+    public Sprite ryuudeSprite;
 
     private int playerKills = 0;
     private int enemyKills  = 0;
@@ -26,11 +36,45 @@ public class BillboardDisplay : MonoBehaviour
         UpdateDisplay("---", "---", 0, 0);
     }
 
-    public void SetFighterNames(string playerName, string enemyName)
+public void SetFighterNames(string playerName, string enemyName)
+{
+    Debug.Log("PLAYER NAME RAW: " + playerName);
+    Debug.Log("ENEMY NAME RAW: " + enemyName);
+
+    if (playerNameText != null) playerNameText.text = playerName;
+    if (enemyNameText  != null) enemyNameText.text  = enemyName;
+
+    SetCharacterImages(playerName, enemyName);
+}
+
+    void SetCharacterImages(string playerName, string enemyName)
     {
-        if (playerNameText != null) playerNameText.text = playerName;
-        if (enemyNameText  != null) enemyNameText.text  = enemyName;
+        if (playerImage != null)
+            playerImage.sprite = GetSpriteByName(playerName);
+
+        if (enemyImage != null)
+            enemyImage.sprite = GetSpriteByName(enemyName);
     }
+
+Sprite GetSpriteByName(string name)
+{
+    if (string.IsNullOrEmpty(name)) return null;
+
+    string n = name.ToLower().Trim();
+
+    // 🔥 Remove common Unity junk
+    n = n.Replace("(clone)", "").Trim();
+
+    if (n.Contains("phelsum")) return phelsumSprite;
+    if (n.Contains("oroboro")) return oroboroSprite;
+    if (n.Contains("carakara")) return carakaraSprite;
+    if (n.Contains("cerci")) return cerciSprite;
+    if (n.Contains("mbenga")) return mbengaSprite;
+    if (n.Contains("ryuude")) return ryuudeSprite;
+
+    Debug.LogError("❌ NO SPRITE MATCH FOR: " + name);
+    return null;
+}
 
     public void AddPlayerKill()
     {
