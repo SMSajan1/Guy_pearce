@@ -38,8 +38,8 @@ public class BillboardDisplay : MonoBehaviour
 
 public void SetFighterNames(string playerName, string enemyName)
 {
-    Debug.Log("PLAYER NAME RAW: " + playerName);
-    Debug.Log("ENEMY NAME RAW: " + enemyName);
+    playerName = CleanName(playerName);
+    enemyName  = CleanName(enemyName);
 
     if (playerNameText != null) playerNameText.text = playerName;
     if (enemyNameText  != null) enemyNameText.text  = enemyName;
@@ -96,5 +96,12 @@ Sprite GetSpriteByName(string name)
         if (enemyNameText   != null) enemyNameText.text   = eName;
         if (playerKillsText != null) playerKillsText.text = pKills.ToString();
         if (enemyKillsText  != null) enemyKillsText.text  = eKills.ToString();
+    }
+
+    string CleanName(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return "";
+
+        return name.Replace("(Clone)", "").Trim();
     }
 }
