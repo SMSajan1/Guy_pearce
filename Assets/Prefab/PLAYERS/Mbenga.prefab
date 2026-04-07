@@ -230,7 +230,7 @@ MonoBehaviour:
   A_HitVFX: {fileID: 1687118924408352, guid: 41ffc6e65016cb74283c1a6802b8fec0, type: 3}
   D_HitVFX: {fileID: 1687118924408352, guid: d54f0bcae6eb22d4a9fb32172b10f924, type: 3}
   R_HitVFX: {fileID: 0}
-  Q_HitOffset: {x: 0, y: 0, z: 0}
+  Q_HitOffset: {x: 0, y: 0.9, z: 0}
   E_HitOffset: {x: 0, y: 0, z: 0}
   A_HitOffset: {x: 0, y: 0, z: 0}
   D_HitOffset: {x: 0, y: 0, z: 0}

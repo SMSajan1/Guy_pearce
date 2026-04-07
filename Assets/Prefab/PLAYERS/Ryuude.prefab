@@ -277,7 +277,7 @@ MonoBehaviour:
   Q_HitVFX: {fileID: 4806843881307822078, guid: 68f21153e4e3fb5488814e6707fe2c53, type: 3}
   E_HitVFX: {fileID: 7221122369306011518, guid: 14487c6d99e8ca14180ee43dce273f75, type: 3}
   A_HitVFX: {fileID: 8172849020266659018, guid: 38ae6a3068be8cf4bad1b2f830593b37, type: 3}
-  D_HitVFX: {fileID: 8764043878647920493, guid: 86a677a7bc56a844fa700793b5a0183b, type: 3}
+  D_HitVFX: {fileID: 0}
   R_HitVFX: {fileID: 0}
   Q_HitOffset: {x: 0, y: 0, z: 0}
   E_HitOffset: {x: 0, y: 0, z: 0}
