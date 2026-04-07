@@ -1032,7 +1032,7 @@ MonoBehaviour:
   Q_CastVFX: {fileID: 8172849020266659018, guid: c1772a6aafba2e64890617719089026f, type: 3}
   E_CastVFX: {fileID: 5297742729642442140, guid: d04cbb0be5321cb4185be5db580e20ad, type: 3}
   A_CastVFX: {fileID: 2360655870356088562, guid: 4de51f32d58850c41937a6522f61bca2, type: 3}
-  D_CastVFX: {fileID: 8194992990867289339, guid: cc1f4ae01eba3a34c82886371b7c76b6, type: 3}
+  D_CastVFX: {fileID: 0}
   R_CastVFX: {fileID: 8764043878647920493, guid: 660ace37de72ccd4982de7fbf54dd2c4, type: 3}
   Q_CastOffset: {x: -0.02, y: 0, z: 0}
   E_CastOffset: {x: 0, y: 0, z: 0}
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   D_CastOffset: {x: 0, y: 0, z: 2.09}
   R_CastOffset: {x: -0.02, y: 0.1, z: 0.1}
   Q_HitVFX: {fileID: 0}
-  E_HitVFX: {fileID: 5297742729642442140, guid: d04cbb0be5321cb4185be5db580e20ad, type: 3}
+  E_HitVFX: {fileID: 0}
   A_HitVFX: {fileID: 2360655870356088562, guid: 4de51f32d58850c41937a6522f61bca2, type: 3}
   D_HitVFX: {fileID: 5010331647855986242, guid: f9a7a7933b92b754e8d492a75350fea0, type: 3}
   R_HitVFX: {fileID: 0}
